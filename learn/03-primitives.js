@@ -86,6 +86,13 @@ null
 // Symbol
 // ----------------------------------------------
 
-console.log(Symbol())
-console.log(Symbol(2025))
-console.log(Symbol('고유식별자'))
+// console.log(Symbol())
+// console.log(Symbol(2025))
+// console.log(Symbol('고유식별자'))
+
+// ----------------------------------------------
+// BigInt
+// ----------------------------------------------
+
+console.log(BigInt(Number.MAX_SAFE_INTEGER + 10))
+console.log(10000n)
