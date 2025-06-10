@@ -56,33 +56,15 @@ function drawWater() {
 
 // 함수 밖에 있는 [ 전역 ] 변수 (global scope variables)
 // 코드 실행 범위 어디서나 접근이 가능한 변수 
-let year = 4027
+// let year = 4027
 
 // 함수 선언
-function 일기쓰기(연도, 월, 일) {
-  // 함수이름 옆 () 안에 선언된 변수를 특별히 매개변수라 부른다.
-  // console.log(연도, 월, 일)
-
-  // 함수 내부에 선언된 변수
-  // 함수 안에서 사용
-  // 지역 변수 (local scope variables)
-
-  // 연도(year)
-  let year = 2025
-  // 월(month)
-  let month = 6
-  // 일(day)
-  let day = 10
-
-  // year = 2026
-
-  // 변수 + 문자 = 문장
-  // 변수('문자') + 변수('문자') = 문자 연결
-  console.log(연도 + '년 ' + 월 + '월 ' + 일 + '일에 일기를 쓴다.')
+function writeDiary(year, month, day, location) {
+  console.log(year + '년 ' + month + '월 ' + day + '일에 ' + location + '에 다녀온 일기를 쓴다.')
 }
 
 // 함수 호출(실행)
-일기쓰기(2025, 6, 10)
-일기쓰기(2025, 7, 1)
-// 일기쓰기(연도, 월, 일)
-// 일기쓰기(연도, 월, 일)
+// 일기쓰기(연도, 월, 일, 장소)
+writeDiary(2025, 6, 10, '서울 N 타워')
+writeDiary(2025, 7, 1, '부산 광안리 해수욕장')
+writeDiary(2025, 10, 30, '원주 디자인 뮤지엄')
