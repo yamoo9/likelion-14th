@@ -73,11 +73,19 @@ false   // boolean
 
 // 선언된 변수의 기본값으로 사용됨
 undefined
-console.log(undefined)
+// console.log(undefined)
 
 // ----------------------------------------------
 // Null
 // ----------------------------------------------
 
 null
-console.log(null)
+// console.log(null)
+
+// ----------------------------------------------
+// Symbol
+// ----------------------------------------------
+
+console.log(Symbol())
+console.log(Symbol(2025))
+console.log(Symbol('고유식별자'))
