@@ -189,7 +189,7 @@ function logger(logMessage) {
   console.log('로그 메시지: ', logMessage)
 }
 
-logger('실습을 통한 연습은 언제나 옳습니다. ☺️')
+// logger('실습을 통한 연습은 언제나 옳습니다. ☺️')
 
 
 /* -------------------------------------------------------------------------- */
@@ -271,3 +271,15 @@ function priceWithTax(price) {
   return price + ( price * TAX_RATIO )
 }
 
+// 나이가 성인인지 판별하는 함수
+// 나이가 성인이면 true 반환 , 나이가 미성년이면 false 반환
+// 비교 연산자
+// x == y (같다)
+// x > y | x >= y (크다 | 크거나 같다)
+
+const 성인_나이_기준 = 19
+
+function 성인나이인가요(나이) {
+  let 성인나이인지아닌지여부 = 나이 >= 성인_나이_기준 // true or false
+  return 성인나이인지아닌지여부
+}
