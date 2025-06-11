@@ -217,8 +217,8 @@ function 피자가격계산(피자가격, 피자갯수) {
   return 피자가격 * 피자갯수
 }
 
-console.log(피자가격계산(10_000, 5))
-console.log(피자가격계산(22_000, 2))
+// console.log(피자가격계산(10_000, 5))
+// console.log(피자가격계산(22_000, 2))
 
 // 주차요금 계산 함수
 const HOUR_PARKING_FEE = 1000
@@ -227,8 +227,8 @@ let 주차요금계산 = function(주차시간) {
   return 주차시간 * HOUR_PARKING_FEE + '원'
 }
 
-console.log(주차요금계산(1.5))
-console.log(주차요금계산(5))
+// console.log(주차요금계산(1.5))
+// console.log(주차요금계산(5))
 
 
 // 짝수, 홀수 확인 함수
@@ -238,3 +238,36 @@ let 짝수인지확인 = function(수) {
   // 비교 연산자 (x == y 비교한다)
   return 수 % 2 == 0
 }
+
+// 생일 축하 메시지 출력 함수
+// "[     ]야! 너의 생일을 진심으로 축하해! 🎂🎉"
+
+function 생일축하메시지출력(누구야) {
+  return 누구야 + "야! 너의 생일을 진심으로 축하해! 🎂🎉"
+}
+
+
+// 올해 남은 날짜 계산 함수
+
+const NUMBER_OF_DAYS_OF_YEAR = 365
+
+function 올해남은날짜계산(현재날짜의일수) {
+  return NUMBER_OF_DAYS_OF_YEAR - 현재날짜의일수
+}
+
+
+// 세금 포함 가격 계산 함수
+
+const 세금_비율 = 0.0333 // 3.3333%
+
+function 세금포함가격계산(가격) {
+  // return 가격 + 가격의세금비율만큼해당하는금액
+  return 가격 + ( 가격 * 세금_비율 )
+}
+
+const TAX_RATIO = 0.0333 // 3.3333%
+
+function priceWithTax(price) {
+  return price + ( price * TAX_RATIO )
+}
+
