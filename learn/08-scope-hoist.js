@@ -211,3 +211,30 @@ function remToPx(rem) {
   // return px
   return rem * 16 + 'px'
 }
+
+// 주문한 피자 가격 계산 함수
+function 피자가격계산(피자가격, 피자갯수) {
+  return 피자가격 * 피자갯수
+}
+
+console.log(피자가격계산(10_000, 5))
+console.log(피자가격계산(22_000, 2))
+
+// 주차요금 계산 함수
+const HOUR_PARKING_FEE = 1000
+
+let 주차요금계산 = function(주차시간) {
+  return 주차시간 * HOUR_PARKING_FEE + '원'
+}
+
+console.log(주차요금계산(1.5))
+console.log(주차요금계산(5))
+
+
+// 짝수, 홀수 확인 함수
+let 짝수인지확인 = function(수) {
+  // 수 % 2 -> (0 또는 1)
+  // 수 % 2 == 0 -> (true 또는 false)
+  // 비교 연산자 (x == y 비교한다)
+  return 수 % 2 == 0
+}
