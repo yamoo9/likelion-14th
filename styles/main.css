@@ -1,4 +1,10 @@
 body {
-    background-color:#111;
-    color:#fff;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  min-block-size: 100vh;
+  background-color: #111;
+  color: #fff;
+  margin: 0;
 }
