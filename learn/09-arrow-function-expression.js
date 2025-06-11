@@ -154,3 +154,77 @@ let getStyles = () => ({
 // }
 
 console.log(getStyles())
+
+
+// 왜 함수를 화살표 함수 표현식으로 사용할 때 
+// let이 아닌, const를 사용했을까?
+
+const thisIsAFunction = () => {
+  console.log('이것은 함수 입니다.')
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+thisIsAFunction = {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log(thisIsAFunction)
+
+thisIsAFunction()
