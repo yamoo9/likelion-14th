@@ -100,8 +100,10 @@ const h1Kebab = {
 console.log(h1Kebab['font-weight']) // 200
 
 // 객체 속성 쓰기(Write)
-h1Kebab['font-weight'] = 700 // bold
 h1Kebab['font-style'] = 'oblique'
+
+// 객체 속성 수정(Update)
+h1Kebab['font-weight'] = 700 // bold
 
 // 수정된 객체 속성 읽기(Read)
 console.log(h1Kebab['font-weight']) // 700
@@ -113,3 +115,23 @@ console.log(h1Kebab)
 delete h1Kebab['font-style']
 
 console.log(h1Kebab)
+
+
+// 객체의 속성(Object's Properties)
+// h1Camel.fontSize
+// h1Camel.fontWeight
+
+// 객체의 메서드(Object's Methods : 객체의 속성 중 함수(동사)형태의 것을 특별히 메서드라고 부른다.)
+h1Camel.getFontSize = function() {
+  return h1Camel.fontSize
+}
+
+console.log(h1Camel.getFontSize())
+
+macbookPro.getOS = function() {
+  return macbookPro.macOS
+}
+
+console.log(macbookPro.getOS())
+console.log(macbookPro['getOS']())
+
