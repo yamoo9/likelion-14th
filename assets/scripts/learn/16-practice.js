@@ -1,3 +1,7 @@
+// --------------------------------------------------------------------------
+// ✅ 실습
+// --------------------------------------------------------------------------
+
 // if … else 명령문을 사용하여 프로그램의 흐름을 제어하는 것은 매우 중요합니다.
 
 // 1. 명호는 24살, 아현이는 27살, 재웅이는 41살입니다.
@@ -36,8 +40,8 @@ console.log(Boolean(true))
 console.log(Boolean(-1))
 console.log(Boolean(undefined))
 console.log(Boolean(0))
-console.log(Boolean(""))
+console.log(Boolean(''))
 console.log(Boolean({}))
 console.log(Boolean(false))
-console.log(Boolean(" "))
+console.log(Boolean(' '))
 console.log(Boolean({ isHavingFun: true }))

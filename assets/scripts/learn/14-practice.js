@@ -1,8 +1,8 @@
 // --------------------------------------------------------------------------
-// 📌 객체 만들기
+// ✅ 객체 만들기
 // --------------------------------------------------------------------------
-
-// 예) 사람(person) 또는 도서(book)
+// - [x] 사람(person) 또는 도서(book) 객체 만들기
+// --------------------------------------------------------------------------
 
 let book
 console.log(book)
@@ -28,14 +28,14 @@ book['page count'] = 180
 console.log(book)
 
 // 6. 객체의 속성 타입을 함수로 설정해 메서드를 추가하고, 이 메서드를 호출해보세요.
-book.getAuthors = function() {
+book.getAuthors = function () {
   return '박소영, 박수영'
 }
 console.log(book.getAuthors)
 console.log(book.getAuthors())
 
 // 7. 객체의 메서드에 매개변수를 추가하고, 이 메서드를 호출해봅니다.
-book.getPrice = function(unit) {
+book.getPrice = function (unit) {
   return '16,200' + unit
 }
 

@@ -1,4 +1,8 @@
 // --------------------------------------------------------------------------
+// 📌 JavaScript 객체(Object)
+// --------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------
 // 기본 타입(Primitive Types, 간단)
 // --------------------------------------------------------------------------
 // 1. String - '문자값'
@@ -15,10 +19,6 @@
 // 1. Function - () => {}
 // 2. Object - {}
 // 3. Array - []
-  
-// --------------------------------------------------------------------------
-// 📌 JavaScript 객체(Object)
-// --------------------------------------------------------------------------
 
 // 객체 생성자(Constructor)를 사용해 객체 생성
 // const 커피 = new Object()
@@ -82,18 +82,18 @@ const 객체 = {
   빅인트: 910n,
   배열: [],
   객체: {},
-  함수: () => {}
+  함수: () => {},
 }
 
 const h1Camel = {
-  'fontWeight': 200,
-  'fontSize': '2.65rem',
+  fontWeight: 200,
+  fontSize: '2.65rem',
 }
 
 // 객체 생성 (리터럴 방법: 쉽다!)
 const h1Kebab = {
   'font-weight': 200,
-  "font-size": '2.65rem',
+  'font-size': '2.65rem',
 }
 
 // 객체 속성 읽기(Read)
@@ -116,19 +116,18 @@ delete h1Kebab['font-style']
 
 console.log(h1Kebab)
 
-
 // 객체의 속성(Object's Properties)
 // h1Camel.fontSize
 // h1Camel.fontWeight
 
 // 객체의 메서드(Object's Methods : 객체의 속성 중 함수(동사)형태의 것을 특별히 메서드라고 부른다.)
-h1Camel.getFontSize = function() {
+h1Camel.getFontSize = function () {
   return h1Camel.fontSize
 }
 
 console.log(h1Camel.getFontSize())
 
-macbookPro.getOS = function() {
+macbookPro.getOS = function () {
   return macbookPro.macOS
 }
 
@@ -136,13 +135,12 @@ console.log(macbookPro.getOS())
 console.log(macbookPro['getOS']())
 
 // 메서드 정의 (매개변수 포함)
-macbookPro.playMusic = function(songTitle) {
+macbookPro.playMusic = function (songTitle) {
   return '"' + songTitle + '" 재생을 시작합니다. 🎵'
 }
 
 // 메서드 사용 (함수처럼 호출, 객체를 통해 메서드에 접근)
 console.log(macbookPro.playMusic('첫 눈처럼 너에게 가겠다.'))
-
 
 // --------------------------------------------------------------------------
 // 📌 함수의 타입은?
@@ -162,7 +160,6 @@ console.log(likeLion.order)
 delete likeLion.order
 
 console.log(likeLion.order)
-
 
 // "함수는 값이다."
 // - 함수는 값이므로 함수에 인수로 전달 가능하다. (일급 객체, 일급 함수)
@@ -190,22 +187,21 @@ console.log(likeLion.order)
       console.log('안녕! ' + name)
     }
   }
-
 }
 
 {
   const galaxyNoteBook = {
     deviceName: '갤럭시 노트북',
-    getDeviceName: function() {
+    getDeviceName: function () {
       return galaxyNoteBook.deviceName
-    }
+    },
   }
 
-  // console.log(galaxyNoteBook.getDeviceName) 이렇게 하면 함수가 나오고 
+  // console.log(galaxyNoteBook.getDeviceName) 이렇게 하면 함수가 나오고
   // 함수(컴퓨터 메모리 상에 기억: 주소) 참조
-  console.log(galaxyNoteBook.getDeviceName) 
+  console.log(galaxyNoteBook.getDeviceName)
 
   // console.log(galaxyNoteBook.getDeviceName()) 이렇게 했을때 value가 나오는데 왜 그런건가요?
   // 함수(컴퓨터 메모리 상에 기억: 주소) 실행 (소괄호()는 함수이름이 실행 연산자를 만나면 함수가 실행 => 값 반환)
-  console.log(galaxyNoteBook.getDeviceName()) 
+  console.log(galaxyNoteBook.getDeviceName())
 }

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------
-// 화살표 함수 표현식 (Arrow Function Expression)
+// 📌 화살표 함수 표현식 (Arrow Function Expression)
 // --------------------------------------------------------------------------
 
 // JavaScript 함수를 만드는 방법 3가지
@@ -33,7 +33,6 @@ let lookAndMe = function () {
 // 1. 매개변수의 갯수
 //    1개인 경우에는 소괄호 생략 가능하다.
 
-
 //    0개
 // let readABook = () => {
 //   console.log('"책"을 읽다.')
@@ -58,7 +57,6 @@ let lookAndMe = function () {
 
 // readABook('오만과 편견')
 
-
 //    2개 이상인 경우, 소괄호 생략을 허용하지 않는다.
 
 let readABook = (bookName, day) => {
@@ -67,13 +65,11 @@ let readABook = (bookName, day) => {
 
 readABook('오만과 편견', 21)
 
-
 // 2. 암묵적 반환
 //    return undefined (암묵적 반환, 기본 반환)
 //    return 값 (명시적 반환)
 
 const ROOT_FONT_SIZE = 16
-
 
 // 함수 선언
 // function px2rem(pxValue) {
@@ -106,8 +102,7 @@ let pxToRem = function (pxValue) {
 }
 
 // let px2rem = pxValue => pxValue / ROOT_FONT_SIZE + 'rem'
-let px2rem = pxValue => 
-    pxValue / ROOT_FONT_SIZE + 'rem'
+let px2rem = (pxValue) => pxValue / ROOT_FONT_SIZE + 'rem'
 
 // console.log(px2rem(28))
 
@@ -133,17 +128,17 @@ let px2rem = pxValue =>
 // }
 
 // 화살표 함수 표현식
-let getStyles1 = _ => { 
+let getStyles1 = (_) => {
   return {
     'display': 'grid',
-    'row-gap': 24
+    'row-gap': 24,
   }
 }
 
 // let getStyles = _ => (객체값에중괄호가포함되면문법오류)
 let getStyles = () => ({
   'display': 'grid',
-  'row-gap': 24
+  'row-gap': 24,
 })
 
 // function getStyles() {
@@ -155,8 +150,7 @@ let getStyles = () => ({
 
 console.log(getStyles())
 
-
-// 왜 함수를 화살표 함수 표현식으로 사용할 때 
+// 왜 함수를 화살표 함수 표현식으로 사용할 때
 // let이 아닌, const를 사용했을까?
 
 // const를 사용해야 하는 경우
@@ -175,72 +169,11 @@ const 게임_캐릭터 = {
 
 게임_캐릭터 = null // ERROR
 
-
 const thisIsAFunction = () => {
   console.log('이것은 함수 입니다.')
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 thisIsAFunction = {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // console.log(thisIsAFunction)
 
