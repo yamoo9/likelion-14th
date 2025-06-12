@@ -135,3 +135,11 @@ macbookPro.getOS = function() {
 console.log(macbookPro.getOS())
 console.log(macbookPro['getOS']())
 
+// 메서드 정의 (매개변수 포함)
+macbookPro.playMusic = function(songTitle) {
+  return '"' + songTitle + '" 재생을 시작합니다. 🎵'
+}
+
+// 메서드 사용 (함수처럼 호출, 객체를 통해 메서드에 접근)
+console.log(macbookPro.playMusic('첫 눈처럼 너에게 가겠다.'))
+
