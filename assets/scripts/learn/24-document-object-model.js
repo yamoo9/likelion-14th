@@ -27,4 +27,13 @@ const firstElementByClassName = document.querySelector('.item')
 // console.log(firstElementByClassName)
 
 const elementByTagName = document.querySelector('h1')
-console.log(elementByTagName)
+// console.log(elementByTagName)
+
+// Document {}
+const app = document.getElementById('app') // 성능 면에서 더 낫다 (더 빠르다)
+// const appElement = document.querySelector('#app')
+
+// Element.querySelector(selector)
+const appFirstListItem = app.querySelector('li.item')
+
+console.log(appFirstListItem)
