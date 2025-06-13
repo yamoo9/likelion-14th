@@ -25,6 +25,16 @@
   --yellow-800: #635a0c;
   --yellow-900: #322d06;
   --yellow-950: #1a1803;
+
+  --blue-100: #d9edfd;
+  --blue-200: #b3dbfb;
+  --blue-300: #8ec9f9;
+  --blue-400: #68b7f7;
+  --blue-500: #42a5f5;
+  --blue-600: #3584c4;
+  --blue-700: #286393;
+  --blue-800: #1a4262;
+  --blue-900: #0d2131;
   
   --fg-color: light-dark(var(--gray-950), var(--yellow-500));
   --bg-color: light-dark(var(--yellow-500), var(--gray-950));
