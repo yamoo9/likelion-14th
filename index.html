@@ -13,9 +13,30 @@
 
     <h1>JavaScript</h1>
 
+    <button type="button">
+      레거시 이벤트 모델을 사용하는 요소 1
+    </button>
+    <button type="button">
+      레거시 이벤트 모델을 사용하는 요소 2
+    </button>
+    <button type="button">
+      레거시 이벤트 모델을 사용하는 요소 3
+    </button>
+
+    <script>
+      // 이벤트 핸들러(event handler)
+      function toggleLog() {
+        console.log('toggle triggered')
+      }
+
+      document.querySelector('button').onclick = toggleLog
+    </script>
+   
+    <hr />
+   
     <button type="button" class="clickable">클릭 가능한 요소</button>
 
-    <script src="./assets/scripts/learn/27-event-listening.js"></script>
+
   </body>
 
 </html>
