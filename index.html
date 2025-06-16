@@ -13,90 +13,34 @@
 
     <h1>JavaScript</h1>
 
-    <ul id="exorcist-characters">
-      <li class="character yo-han" data-type="hero">박요한</li>
-      <li class="character master-choi" data-type="master">최강림</li>
-      <li class="character villain-ghost" data-type="villain">악령</li>
-    </ul>
+    <button type="button" class="clickable">클릭 가능한 요소</button>
 
-    <div id="demo">
-      <p class="add">
-        단락에 "text-primary" 클래스 이름을 추가해 주세요!
-      </p>
-      <script>
-        {
-          const element = document.getElementById('demo')
-            .querySelector('.add')
-    
-          element.classList.add('text-primary')
-          // console.log(element.classList.value)
-          // console.log(element.classList.length)
-        }
-      </script>
+    <script>
+      const clickable_button = document.querySelector('.clickable')
+      const body = document.body
 
-      <p class="remove">
-        단락에서 "remove" 클래스 이름을 제거해 주세요!
-      </p>
-      <script>
-        {
-          const demo = document.getElementById('demo')
-          const element = demo.querySelector('.remove')
-          console.log(element.classList.length) // 1
-          element.classList.remove('remove')
-          console.log(element.classList.length) // 0
-        }
-      </script>
+      clickable_button.addEventListener('click', () => {
+        // body 요소에 is-active 클래스 이름 추가
+        body.classList.add('is-active')
+        // .clickable_button 요소에 is-active 클래스 이름 추가
+        clickable_button.classList.add('is-active')
+      })
+      
+      
+      // console.log(clickable_button)
 
-      <p class="contains1">
-        단락은 "text-primary" 클래스 이름을 가지고 있나요?
-      </p>
-      <script>
-        {
-          const result = document.querySelector('#demo .contains1')
-            .classList.contains('text-primary')
-
-          if (result) {
-            console.log('.contains1 요소는 text-primary 클래스 이름을 가지고 있습니다.')
-          } else {
-            console.log('.contains1 요소는 text-primary 클래스 이름을 가지고 있지 않습니다.')
-          }
-        }
-      </script>
-
-      <p class="contains2 text-primary">
-        단락은 "text-primary" 클래스 이름을 가지고 있나요?
-      </p>
-      <script>
-        {
-          const element = document.querySelector('.contains2')
-          console.log(element.classList.contains('text-primary'))
-        }
-      </script>
-
-      <p class="toggle">
-        단락은 "text-primary" 이름을 가지고 있나요?
-        있다면 삭제하고, 없다면 추가해 주세요.
-      </p>
-      <script>
-        {
-          const toggleElement = document.querySelector('#demo .toggle')
-          console.log(toggleElement.classList.value)
-          
-          toggleElement.classList.toggle('text-primary')
-
-          // if (toggleElement.classList.contains('text-primary')) {
-          //   toggleElement.classList.remove('text-primary')
-          // } else {
-          //   toggleElement.classList.add('text-primary')
-          // }
-          
-          console.log(toggleElement.classList.value)
-        }
-      </script>
-
-    </div>
-
-    <script src="./assets/scripts/learn/26-change-class-properties.js"></script>
+      // clickable_button.addEventListener(
+      //   /* event type (string)*/
+      //   'click', 
+      //   /* event listener (function) */
+      //   // function() {
+      //   //   console.log('clicked clickable button')
+      //   // }
+      //   () => {
+      //     console.log('clicked clickable button')
+      //   }
+      // )
+    </script>
 
   </body>
 
