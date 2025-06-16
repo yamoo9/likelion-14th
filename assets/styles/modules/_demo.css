@@ -21,7 +21,7 @@ h1 {
   li {
     padding: 4px;
 
-    &.active {
+    &.charactor-is-active {
       font-weight: 900;
       color: var(--blue-700);
     }
