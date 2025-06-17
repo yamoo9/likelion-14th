@@ -5,7 +5,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const closeButton = dialog.querySelector('button')
   // console.log(closeButton) // HTMLButtonElement
   closeButton.addEventListener('click', () => {
-    document.body.classList.add('dialog-is-hidden')
+    // document.body.classList.add('dialog-is-hidden')
+    dialog.classList.add('dialog-close')
   })
 })
 

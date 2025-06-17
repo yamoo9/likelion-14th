@@ -5,7 +5,12 @@
 }
 
 .dialog {
-  .dialog-is-hidden & {
+  /* .dialog-is-hidden & {
+    z-index: -1;
+    opacity: 0;
+  } */
+
+  &.dialog-close {
     z-index: -1;
     opacity: 0;
   }
