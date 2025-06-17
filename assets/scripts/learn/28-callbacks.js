@@ -27,14 +27,8 @@ handleBodyToggleClass() // 3 // 5s
 handleBodyToggleClass() // 4 // 5s
 handleBodyToggleClass() // 5 // 5s (25s)
 
-
 // addEventListener()를 사용해 리스너를 추가하는 것은 x N회 가능
 button.addEventListener('click', handleButtonToggleClass)
-
-
-
-
-
 
 // 레거시 이벤트 vs. 모던 이벤트 모델
 // 변수에는 여러 값을 저장할 수 있다? 아니다 변수는 단 하나의 값만 저장할 수 있다?
