@@ -23,4 +23,4 @@ progress{vertical-align:baseline}
 details{display:block}
 summary{display:list-item}
 table{border-color:currentcolor}
-[hidden]{display:none!important}
+[hidden]{display:none !important}
