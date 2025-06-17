@@ -7,10 +7,10 @@ const siteContainer = document.querySelector('.site-container')
 const toggleOffsiteButton = siteContainer.querySelector('button')
 
 toggleOffsiteButton.addEventListener('click', () => {
-  console.log('open offsite container')
+  // 2. 버튼을 클릭하면 화면을 오른쪽으로 밀어줍니다.
+  
 })
 
-// 2. 버튼을 클릭하면 화면을 오른쪽으로 밀어줍니다.
 
 
 // 3. 버튼을 다시 클릭하면 화면을 왼쪽으로 밀어 넣습니다.

@@ -13,10 +13,13 @@
   max-width: 33rem;
 }
 
-.offsite-container,
-.site-container {
-  /* CSS Transform */
-  /* translate: 14rem; */
+.offsite-is-open {
+  .offsite-container,
+  .site-container {
+    /* CSS Transform */
+    /* transform: translateX(14rem); */
+    translate: 14rem 0;
+  }
 }
 
 /* 상태(status, state) 클래스 이름 */
