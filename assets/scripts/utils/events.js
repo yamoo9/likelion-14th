@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 function click(element, listener) {
   element.addEventListener('click', listener)
 }
