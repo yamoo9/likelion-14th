@@ -120,11 +120,11 @@
 
 
 ;(() => {
-  // let userInput = Number.parseInt(prompt('1부터 10까지 숫자를 입력하세요.'), 10);
+  // let userInput = Number.parseInt(prompt('1부터 10까지 숫자를 입력하세요.'), 10)
 
   // while (Number.isNaN(userInput) || userInput < 1 || userInput > 10) {
-  //   console.error('입력 값이 1부터 10 사이의 숫자여야 합니다.');
-  //   userInput = Number.parseInt(prompt('1부터 10까지 숫자를 입력하세요.'), 10);
+  //   console.error('입력 값이 1부터 10 사이의 숫자여야 합니다.')
+  //   userInput = Number.parseInt(prompt('1부터 10까지 숫자를 입력하세요.'), 10)
   // }
 
   // console.log('userInput =', userInput)
@@ -209,3 +209,75 @@
   
   console.log('사용자가 입력한 값은 ' + userInput + '입니다.')
 })
+
+// --------------------------------------------------------------------------
+// 하나의 파일 안에서 다른 코드와 충돌 없이 일종의 캡슐화(모듈) 처리
+// 즉시 실행되는 함수 표현식(IIFE) 패턴
+
+// 함수는 값
+// JS에서 (함수값)
+// ;(() => {
+//   console.log('나를 보세요')
+// })()
+
+// --------------------------------------------------------------------------
+// i = i + 1 vs. i++
+;(() => {
+  let i = 0
+
+  i = i + 1
+
+  i++
+
+  ++i
+
+  console.log(i)
+})
+
+// --------------------------------------------------------------------------
+// for 문
+// while 문 vs. for 문
+
+
+// while 문 예시
+;(() => {
+
+  let i = 0
+
+  while(i < 10) {
+    console.count('while 문')
+    ++i
+  }
+
+})
+
+// for 문 예시
+;(() => {
+
+  for(let i = 0; i < 10; i = i + 1) {
+    console.count('for 문')
+  }
+
+})
+
+;(() => {
+
+  let i = 0
+
+  for(; i < 10;) {
+    console.count('for 문') 
+    ++i
+  }
+  
+})
+
+;(() => {
+  // let i = 0
+
+  // for(변수선언값할당; 변수가유효한지비교; 변수변경) {
+  for( let i = 0; i < 10; ++i ) {
+    console.count('for 문', i) 
+    // ++i
+  }
+  
+})()
