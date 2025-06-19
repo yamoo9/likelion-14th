@@ -84,19 +84,73 @@
     console.log('도화지에 그림을 그린 횟수 = ' + n)
   }
 
-  while(i++ < drawCount /* 1 ~ 10 -> continue -> 16 ~ 19 */) {
-    // i += 1
-    // ++i
-    // i++
+  // continue
+  // while(i++ < drawCount /* 1 ~ 10 -> continue -> 16 ~ 19 */) {
+  //   // i += 1
+  //   // ++i
+  //   // i++
 
-    // i = 10
-    if (i > 10 && i <= 15) {
-      continue
+  //   // i = 10
+  //   if (i > 10 && i <= 15) {
+  //     continue
+  //   }
+
+  //   draw(i)
+  // }
+
+  // break
+  while(i++ < drawCount /* 0 < 20 */) {
+    // i = 1, 2, 3, 4, 5
+
+    if (i === 5) { // i = 5
+      break // 반복문 종료
     }
 
-    draw(i)
+    draw(i) // i = 1, 2, 3, 4
   }
 
-  console.log('last i =', i)
+  console.log('마지막 i 값 =', i) // i = 5
 
 })()
+
+
+;(() => {
+  // let userInput = Number.parseInt(prompt('1부터 10까지 숫자를 입력하세요.'), 10);
+
+  // while (Number.isNaN(userInput) || userInput < 1 || userInput > 10) {
+  //   console.error('입력 값이 1부터 10 사이의 숫자여야 합니다.');
+  //   userInput = Number.parseInt(prompt('1부터 10까지 숫자를 입력하세요.'), 10);
+  // }
+
+  // console.log('userInput =', userInput)
+
+
+  // 선 증가, 후 증가는 왜 쓰는 지, 어떨 때 쓰는지 궁금합니다! 사실 아직 잘 이해가 안돼서요..ㅠ
+  
+  // let i = 0
+
+  // step 1.
+  // while(i < 10) {
+  //   console.log(i)
+  //   i = i + 1
+  // }
+
+  // step 2.
+  // while(i < 10) {
+  //   console.log(i)
+  //   // i = i + 1
+  //   // i += 1
+  //   i++
+  // }
+
+  // step 3.
+  // while(i++ < 10) {
+  //   console.log(i)
+  // }
+  
+  // step 4.
+  // while(i++ < 10) console.log(i)
+
+})
+
+
