@@ -335,4 +335,43 @@
   //   i = i + 1
   // }
 
+})
+
+;(() => {
+  const fruitBasket = ['체리망고', '토마토', '스트로베리', '워터멜론', '체리']
+
+  // for문을 사용해 과일바구니 내부의 과일 이름을 콘솔 패널에 출력
+  for (let i = 0, l = fruitBasket.length; i < l; i++) {
+    // console.log(fruitBasket[i])
+  }
+
+  const students = [
+    { 이름: '홍민영' },
+    { 이름: '윤정화' },
+    { 이름: '허시온' },
+    { 이름: '조선현' },
+    { 이름: '성정현' },
+    { 이름: '조장원' },
+    { 이름: '차지현' },
+    { 이름: '김동규' },
+    { 이름: '이성은' },
+    { 이름: '고우현' },
+  ]
+
+  // for문을 사용해 수강생의 이름을 콘솔 패널에 출력
+  console.time('정순환')
+  for (let i = 0; i < students.length; i++) {
+    const student = students[i]
+    console.log(student.이름)
+  }
+  console.timeEnd('정순환')
+  
+  // 역순 순환
+  console.time('역순환')
+  for (let i = students.length - 1; i >= 0; i = i - 1) {  
+    const student = students[i]
+    console.log(student.이름)
+  }
+  console.timeEnd('역순환')
+
 })()
