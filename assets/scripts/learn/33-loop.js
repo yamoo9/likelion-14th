@@ -374,4 +374,37 @@
   }
   console.timeEnd('역순환')
 
+})
+
+;(() => {
+  const students = [
+    { 이름: '홍민영' },
+    { 이름: '윤정화' },
+    { 이름: '허시온' },
+    { 이름: '조선현' },
+    { 이름: '성정현' },
+    { 이름: '조장원' },
+    { 이름: '차지현' },
+    { 이름: '김동규' },
+    { 이름: '이성은' },
+    { 이름: '고우현' },
+  ]
+
+  // for...of 문
+  // break ✅
+  // continue ✅
+  // 역순환 가능 ✅ (.toReversed() 메서드 활용)
+  for (const student of students.toReversed()) {
+    // if(
+    //   student.이름 === '성정현' || 
+    //   student.이름 === '김동규'
+    // ) continue
+
+    // if (student.이름 === '이성은') break
+
+    console.log(student.이름)
+
+  }
+  console.log(students)
+
 })()
