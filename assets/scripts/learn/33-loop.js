@@ -15,6 +15,11 @@
 // if 문 vs. while 문
 
 ;(() => {
+  const draw = () => {
+    console.count('도화지에 그림을 그린 횟수')
+    
+  }
+
   let wantToDraw = true
 
   // 조건문
@@ -111,7 +116,7 @@
 
   console.log('마지막 i 값 =', i) // i = 5
 
-})()
+})
 
 
 ;(() => {
@@ -153,4 +158,54 @@
 
 })
 
+// --------------------------------------------------------------------------
+// 반복문 (do ... while)
+// while vs. do ... while
 
+;(() => {
+  
+  let condition = false
+
+  // do...while 문
+  // 조건이 거짓이어도 1번은 반드시 실행
+  do {
+    console.log('do...while')
+  } while(condition)
+
+
+  // while 문
+  // 조건이 거짓이면 1번도 실행 안함
+  while(condition) {
+    console.log('while')
+  }
+
+})
+
+// --------------------------------------------------------------------------
+// 사용자 입력 검증 (while)
+// "1부터 10까지 숫자를 입력하세요"
+
+// do...while 문 사용 예시
+;(() => {
+  let userInput
+
+  do {
+    userInput = parseInt(prompt("1부터 10까지 숫자를 입력하세요"), 10)
+    if (Number.isNaN(userInput) || userInput < 1 || userInput > 10) 
+      console.error('입력 값이 1부터 10까지 숫자여야 합니다.')
+  } while (Number.isNaN(userInput) || userInput < 1 || userInput > 10)
+
+  console.log('사용자가 입력한 값은 ' + userInput + '입니다.')
+})
+
+// while 문 사용 예시
+;(() => {
+  let userInput = parseInt(prompt("1부터 10까지 숫자를 입력하세요"), 10)
+
+  while (Number.isNaN(userInput) || userInput < 1 || userInput > 10) {
+    console.error('입력 값이 1부터 10까지 숫자여야 합니다.')
+    userInput = parseInt(prompt("1부터 10까지 숫자를 입력하세요"), 10)
+  }
+  
+  console.log('사용자가 입력한 값은 ' + userInput + '입니다.')
+})
