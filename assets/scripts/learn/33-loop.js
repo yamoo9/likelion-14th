@@ -407,4 +407,33 @@
   }
   console.log(students)
 
+})
+
+// 아래 코드를 넣었는데 문법 오류라고 떠요 
+// Uncaught SyntaxError: Unexpected token ';'
+// 아무리 봐도 모르겠어요~
+
+;(() => {
+  
+  const webTech = {
+    html: 'hyper text markup language',
+    css: 'cascading style sheet',
+    javascript: 'programming language'
+  }
+  
+  // 객체 전용 순환
+  // for ... in 문
+  for ( const key in webTech ) {
+    const value = webTech[key]
+    console.table({
+      key: key,
+      value: value
+    })
+  }
+
+
+  // for 문 (객체에서 활용하지 않음)
+  // for ... of 문 (객체에서 활용하지 않음)
+
+
 })()
