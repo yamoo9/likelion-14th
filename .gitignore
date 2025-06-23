@@ -1,9 +1,13 @@
 ### Custom ###
 NOTICE.md
+FEEDBACK.md
+prettier.*
 03-accordion
 04-tabs
-practice
-prettier.*
+05-carousel
+06-accordion-event-delegation
+07-tabs-event-delegation
+08-carousel-event-delegation
 
 ### Node ###
 # Logs

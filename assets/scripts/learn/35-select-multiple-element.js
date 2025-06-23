@@ -45,3 +45,59 @@
 
 })()
 
+;(() => {
+  
+  const lifeTips = document.querySelector('.life-tips')
+  // console.log(lifeTips)
+
+  // Document.querySelectorAll(selectors)
+  // Element.querySelectorAll(selectors)
+  const paragraphs = lifeTips.querySelectorAll('p')
+  // console.log(paragraphs)
+
+  // const firstParagraphElement = paragraphs.item(0)
+  // console.log(firstParagraphElement)
+  // const secondParagraphElement = paragraphs.item(1)
+  // console.log(secondParagraphElement)
+  // const lastParagraphElement = paragraphs.item(paragraphs.length - 1)
+  // console.log(lastParagraphElement)
+
+  const PRIMARY_KEY = 'color-primary'
+
+  // Loop (반복, 순환)
+  // - while
+  let i = 0, l = paragraphs.length
+  while (i < l) {
+    const paragraphElement = paragraphs.item(i)
+    paragraphElement.classList.add(PRIMARY_KEY)
+    ++i
+  }
+
+  // - do...while
+  
+  // - for
+  for (let i = 0, l = paragraphs.length; i < l; ++i) {
+    const paragraphElement = paragraphs.item(i)
+    // console.log(paragraphElement)
+    if (paragraphElement.classList.contains(PRIMARY_KEY)) {
+      paragraphElement.classList.remove(PRIMARY_KEY)
+    }
+  }
+
+  // - for...of
+  for (const paragraphElement of paragraphs) {
+    // console.log(paragraphElement)
+    if (!paragraphElement.classList.contains(PRIMARY_KEY)) {
+      paragraphElement.classList.add(PRIMARY_KEY)
+    }
+  }
+
+  // - NodeList.forEach((value, key, parent) => {...})
+  paragraphs.forEach((p) => {
+    if (p.classList.contains(PRIMARY_KEY)) {
+      p.classList.remove(PRIMARY_KEY)
+    }
+  })
+
+})()
+
