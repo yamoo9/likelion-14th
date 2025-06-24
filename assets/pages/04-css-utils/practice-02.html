@@ -32,10 +32,9 @@
 	      cursor: pointer;
 	    }
 	  </style>
+    <script src="/assets/scripts/utils/css.js"></script>
 	</head>
 	<body>
-	
-	  <p class="text">이 텍스트의 글자 크기를 조절해 보세요!</p>
 	
 	  <div class="controls">
 	    <label for="textColor">
@@ -48,12 +47,41 @@
 	      <input type="color" id="backgroundColor" value="#ffffff" />
 	    </label>
 	  </div>
+
+    <p class="text">이 텍스트의 글자 및 배경 색상을 조절해 보세요!</p>
 		
     <script>
       {
-        // ## 글자 및 배경 색상 조절
-        // 레인지(range) 인풋 값이 변경되면 `.text` 요소의 글자 크기가 변경되도록 구현합니다.
+        // 글자 및 배경 색상 조절
+        // 레인지(range) 인풋 값이 변경되면 `.text` 요소의 글자 및 배력 색상이 변경되도록 구현합니다.
+
+        // 텍스트 엘리먼트 찾기
+        const textElement = document.querySelector('.text')
+
+        // 텍스트 엘리먼트에서 전경(foreground)/배경(background) 색상 값 읽기
+        const foregroundColor = css(textElement, 'color')
+        const backgroundColor = css(textElement, 'background-color')
+
+        // 컬러 인풋 엘리먼트 찾기
+        const fgInput = document.getElementById('textColor')
+        const bgInput = document.getElementById('backgroundColor')
+
+        // 각 인풋 엘리먼트의 값 설정 (skip)
+        // fgInput.value = rgbToHex(foregroundColor) // '#fe9900'
+        // bgInput.value = rgbToHex(backgroundColor) // '#0088f8'
+
+        // 각 인풋 엘리먼트에 change 또는 input 이벤트 리스너 추가
+        fgInput.addEventListener('input', () => {
+          // 텍스트 엘리먼트에서 전경(foreground) 색상 값 쓰기(설정)
+          css(textElement, 'color', fgInput.value)
+        })
+        
+        bgInput.addEventListener('input', () => {
+          // 텍스트 엘리먼트에서 배경(background) 색상 값 쓰기(설정)
+          css(textElement, 'background-color', bgInput.value)
+        })
+
       }
-    </script>    
+    </script>
 	</body>
 </html>
