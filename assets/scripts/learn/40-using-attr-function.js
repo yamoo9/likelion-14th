@@ -1,6 +1,6 @@
-/* global attr */
+/* global attr, setAttr, getAttr */
 
-{
+;(() => {
   // attr 유틸리티 함수 작성 및 활용
   // attr(element, attributeName, ?attributeValue)
   // 속성 쓰기
@@ -63,4 +63,25 @@
     console.log(attr(h1, 'data-level'))
   })
 
-}
+})
+
+;(() => {
+  const h1 = document.querySelector('h1')
+
+  // 속성 쓰기 (attr 함수 속성 값 전달)
+  setAttr(h1, 'id', 'dynamic')
+  // setAttr(
+  //   setAttr(h1, 'id', 'dynamic'), 
+  //   'title', 
+  //   '다이내믹 코리아'
+  // )
+
+  // 속성 읽기 (attr 함수 속성 값 반환)
+  const h1IdValue = getAttr(h1, 'id')
+  console.log(h1IdValue)
+
+  // 방법1(요소): undefined
+  // 방법2(요소): undefined
+  // 함수 체이닝
+  // 방법2(방법1(요소))
+})()

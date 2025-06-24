@@ -13,10 +13,8 @@ function setStyle(element, propertyName, propertyValue) {
 
 function css(element, propertyName, propertyValue, pseudoElement) {
   if (propertyValue) {
-    const styledElement = setStyle(element, propertyName, propertyValue)
-    return styledElement
+    return setStyle(element, propertyName, propertyValue)
   } else {
-    const propertyValue = getStyle(element, propertyName, pseudoElement)
-    return propertyValue
+    return getStyle(element, propertyName, pseudoElement)
   }
 }
