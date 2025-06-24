@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
     <script src="./assets/scripts/utils/css.js"></script>
+    <script src="./assets/scripts/utils/events.js"></script>
+    <script src="./assets/scripts/utils/query.js"></script>
   </head>
 
   <body>
@@ -27,7 +29,27 @@
       <p class="para">흰 셔츠의 얼룩은 세탁 전에 식초나 베이킹소다로 미리 처리하면 잘 지워집니다.</p>
     </section>
 
-    <script src="./assets/scripts/learn/38-using-utils.js"></script>
+    <p 
+      id="notice"
+      class="announcement"
+      data-category="event"
+      data-user-id="27" 
+      data-role="manager" 
+      data-status="active"
+      >
+      모든 태그는 여러 개의 속성을 가질 수 있습니다!
+    </p>
+
+    <form>
+      <div>
+        <!-- HTML attribute -->
+        <input type="checkbox" name="hobby" id="hobby" checked />
+        <label for="hobby">취미</label>
+      </div>
+      <button type="submit">제출</button>
+    </form>
+
+    <script src="./assets/scripts/learn/39-get-set-attribute.js"></script>
   </body>
 
 </html>
