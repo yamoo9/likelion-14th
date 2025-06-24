@@ -31,9 +31,12 @@ body {
 h1 {
   --font-size: 48px;
 
-  font-weight: 200;
-  /* font-size: 2.65rem; */
+  font-weight: 900;
   font-size: var(--font-size, 2.65rem);
+
+  &::before {
+    content: '🌈 '
+  }
 }
 
 #exorcist-characters {
