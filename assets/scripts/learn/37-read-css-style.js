@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 // (정적으로 설정된) 인라인 스타일 값 읽기
 // HTML 문서 구조에 정적으로 추가된 인라인 스타일(style) 속성 값을 읽을 수 있다.
 ;(() => {
@@ -26,7 +28,6 @@
 
 })
 
-
 // 브라우저를 통해 요소 스타일 읽기
 // 요소.style을 사용해 요소에 쓰기 (DOM 업데이트)
 ;(() => {
@@ -45,4 +46,27 @@
   // h1.style을 사용해 h1 요소의 글자 크기를 132px로 설정
   heading1.style.setProperty('--font-size', willUpdateFontSizeValue + 'px')
 
+})
+
+// CSS 가상(의사, 유사) 객체의 스타일 값 읽기
+;(() => {
+  const heading1 = document.querySelector('h1')
+  const heading1PseudoElementStyles = getComputedStyle(heading1, '::after')
+  console.log(heading1PseudoElementStyles.content)
+  console.log(heading1PseudoElementStyles.position)
+  console.log(heading1PseudoElementStyles.right)
+  console.log(heading1PseudoElementStyles.top)
+  console.log(heading1PseudoElementStyles.display)
+  console.log(heading1PseudoElementStyles.zIndex)
+  console.log(heading1PseudoElementStyles.width)
+  console.log(heading1PseudoElementStyles.height)
+  
+  // console.log(heading1PseudoElementStyles.getPropertyValue('content'))
+  // console.log(heading1PseudoElementStyles.getPropertyValue('position'))
+  // console.log(heading1PseudoElementStyles.getPropertyValue('right'))
+  // console.log(heading1PseudoElementStyles.getPropertyValue('top'))
+  // console.log(heading1PseudoElementStyles.getPropertyValue('display'))
+  // console.log(heading1PseudoElementStyles.getPropertyValue('z-index'))
+  // console.log(heading1PseudoElementStyles.getPropertyValue('width'))
+  // console.log(heading1PseudoElementStyles.getPropertyValue('height'))
 })()

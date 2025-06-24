@@ -4,9 +4,10 @@ FEEDBACK.md
 prettier.*
 04-tabs
 05-carousel
-06-accordion-event-delegation
-07-tabs-event-delegation
-08-carousel-event-delegation
+06-modal-dialog-close
+07-accordion-event-delegation
+08-tabs-event-delegation
+09-carousel-event-delegation
 
 ### Node ###
 # Logs

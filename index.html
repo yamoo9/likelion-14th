@@ -8,13 +8,28 @@
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
     <style>
-      body { background-color: maroon; }
-      h1 { color: tan; }
+      body {
+        background-color: maroon;
+      }
+
+      h1 {
+        position: relative;
+        color: tan;
+
+        &::after {
+          /* --custom-property: value; */
+
+          content: ' ❤️';
+          position: absolute;
+          top: -20px;
+          right: -50px;
+        }
+      }
     </style>
   </head>
 
   <body>
-    
+
     <h1>JavaScript</h1>
 
     <div hidden id="star-wars">
@@ -29,7 +44,7 @@
       <p class="para">전자레인지에 금속 용기를 넣으면 화재 위험이 있으니 절대 사용하지 마세요.</p>
       <p class="para">흰 셔츠의 얼룩은 세탁 전에 식초나 베이킹소다로 미리 처리하면 잘 지워집니다.</p>
     </section>
-    
+
     <script src="./assets/scripts/learn/37-read-css-style.js"></script>
   </body>
 
