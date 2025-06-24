@@ -34,6 +34,7 @@
 	  </style>
     <script src="/assets/scripts/utils/css.js"></script>
     <script src="/assets/scripts/utils/query.js"></script>
+    <script src="/assets/scripts/utils/colors.js"></script>
     <script src="/assets/scripts/utils/events.js"></script>
 	</head>
 	<body>
@@ -69,8 +70,8 @@
         const bgInput = byId('backgroundColor')
 
         // 각 인풋 엘리먼트의 값 설정 (skip)
-        // fgInput.value = rgbToHex(foregroundColor) // '#fe9900'
-        // bgInput.value = rgbToHex(backgroundColor) // '#0088f8'
+        fgInput.value = rgbToHex(foregroundColor) // '#fe9900'
+        bgInput.value = rgbToHex(backgroundColor) // '#0088f8'
 
         // 각 인풋 엘리먼트에 change 또는 input 이벤트 리스너 추가
         on(fgInput, 'input', () => {
