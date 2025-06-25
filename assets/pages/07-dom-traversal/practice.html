@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <section class="card">
+  <section hidden class="card">
     <h2 class="card__title">상품 정보</h2>
     <div class="card__desc">
       <p>이 제품은 <b>매우 유용</b>합니다.</p>
@@ -16,18 +16,23 @@
   </section>
 
   <script>
-    {
+    ;(() => {
       const card = document.querySelector('.card')
 
       // 1. `.card` 요소의 모든 자식 요소를 찾아 콘솔에 출력합니다.
+      console.log(card.children)
       // 2. `.card` 요소의 첫번째 자식 요소를 찾아 콘솔에 출력합니다.
+      console.log(card.firstElementChild)
       // 3. `.card` 요소의 마지막 자식 요소를 찾아 콘솔에 출력합니다.
+      console.log(card.lastElementChild)
       // 4. `.card__desc` 요소 내부의 모든 `<p>` 요소를 찾아 콘솔에 출력합니다.
+      console.log(card.lastElementChild.children)
+      console.log(card.lastElementChild.querySelectorAll('p'))
 
-    }
+    })
   </script>
 
-  <article hidden class="modal">
+  <article class="modal">
     <head class="modal__head">
       <!-- ... -->
     </head>
@@ -40,13 +45,15 @@
   </article>
 
   <script>
-    {
+    ;(() => {
       const closeButton = document.querySelector('.modal__close')
 
       // 1. `closeButton`의 부모 요소를 탐색해 콘솔 패널에 출력합니다.
+      console.log(closeButton.parentElement)
       // 2. `closeButton`의 상위 요소 중, `.modal` 요소를 탐색해 콘솔 패널에 출력합니다.
+      console.log(closeButton.closest('.modal'))
 
-    }
+    })
   </script>
 
   <ul hidden class="menu">
@@ -62,8 +69,13 @@
       const activeItem = document.querySelector('.active')
 
       // 1. `activeItem`의 이전 형제 요소를 선택해 콘솔 패널에 출력합니다.
+      console.log(activeItem.previousElementSibling)
       // 2. `activeItem`의 다음 형제 요소를 선택해 콘솔 패널에 출력합니다.
+      console.log(activeItem.nextElementSibling)
       // 3. `"서비스"` 콘텐츠를 포함하는 형제 요소를 선택해 콘솔 패널에 출력합니다.
+      console.log(activeItem.previousElementSibling.previousElementSibling)
+      console.log(activeItem.parentElement.children.item(1))
+      console.log(activeItem.closest('ul.menu').querySelector(':nth-child(2)'))
       
     }
   </script>

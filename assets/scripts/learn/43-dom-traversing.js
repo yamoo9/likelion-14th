@@ -2,7 +2,7 @@
 // --------------------------------------------------------------------------
 // 📌 아래 방향으로 DOM 탐색(Traversing)
 // --------------------------------------------------------------------------
-(() => {
+;(() => {
   
   const starWars = document.getElementById('star-wars')
   
@@ -89,4 +89,4 @@
   console.log(parent.children.item(3).firstElementChild)
   console.log(parent.children.item(3).lastElementChild)
 
-})()
+})
