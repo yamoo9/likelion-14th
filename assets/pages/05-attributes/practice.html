@@ -28,10 +28,58 @@
 	  <button type="button" class="button" id="remove">속성 제거</button>
 	
     <script>
-      // 1. "속성 읽기" 버튼 클릭 시, 제품의 커스텀 속성을 읽어 콘솔 패널에 출력합니다. (`getAttribute` 활용)
-      // 2. "속성 읽기" 버튼 클릭 시, 제품의 커스텀 속성을 읽어 콘솔 패널에 출력합니다. (`dataset` 활용)
-      // 3. "재고 수정" 버튼 클릭 시, 현재 재고 값에 2를 더한 값으로 설정하고 "📦 재고: 5"로 화면에 반영합니다.
-      // 4. "속성 제거" 버튼 클릭 시, 제품 `data-stock` 속성을 제거하고, "📦 재고: 없음"으로 화면에 반영합니다.
+      {
+        // -----------------------------------------------------------------------------------
+        // 요소의 빌트인/커스텀 속성 제어 실습
+        // -----------------------------------------------------------------------------------
+
+        const productElement = document.querySelector('.product')
+        const readButton = document.getElementById('read')
+        const updateButton = document.getElementById('update')
+        const removeButton = document.getElementById('remove')
+        
+        // 1. "속성 읽기" 버튼 클릭 시, 제품의 커스텀 속성을 읽어 콘솔 패널에 출력합니다. (`getAttribute` 활용)
+        readButton.addEventListener('click', () => {
+          console.group('getAttribute')
+          const dataName = productElement.getAttribute('data-name')
+          console.log('데이터 이름 =', dataName, '타입 =', typeof dataName)
+          const dataStock = productElement.getAttribute('data-stock')
+          console.log('데이터 재고 =', dataStock, '타입 =', typeof dataStock)
+          console.groupEnd()
+        })
+
+        // 2. "속성 읽기" 버튼 클릭 시, 제품의 커스텀 속성을 읽어 콘솔 패널에 출력합니다. (`dataset` 활용)
+        readButton.addEventListener('click', () => {
+          console.group('dataset')
+          const dataName = productElement.dataset.name
+          console.log('데이터 이름 =', dataName, '타입 =', typeof dataName)
+          const dataStock = productElement.dataset.stock
+          console.log('데이터 재고 =', dataStock, '타입 =', typeof dataStock)
+          console.groupEnd()
+        })
+
+        // 3. "재고 수정" 버튼 클릭 시, 현재 재고 값에 2를 더한 값으로 설정하고 "📦 재고: 5"로 화면에 반영합니다.
+        updateButton.addEventListener('click', () => {
+          const stock = Number(productElement.dataset.stock)
+          const updateStockValue = stock + 2
+          productElement.dataset.stock = updateStockValue
+
+          // EventTarget -> Node -> Element -> HTMLElement -> HTMLSpanElement -> <span>
+          // <span> 요소는 Node이므로 Node 인터페이스의 textContent 사용 가능
+          const stockOutput = productElement.querySelector('.stock')
+          // Node의 textContent 읽기
+          console.log(stockOutput.textContent, typeof stockOutput.textContent)
+          // Node의 textContent 쓰기
+          stockOutput.textContent = updateStockValue
+        })
+
+        // 4. "속성 제거" 버튼 클릭 시, 제품 `data-stock` 속성을 제거하고, "📦 재고: 없음"으로 화면에 반영합니다.
+        removeButton.addEventListener('click', () => {
+          productElement.removeAttribute('data-stock')
+          productElement.querySelector('.stock').textContent = '없음'
+        })
+
+      }
     </script>
 	</body>
 </html>
