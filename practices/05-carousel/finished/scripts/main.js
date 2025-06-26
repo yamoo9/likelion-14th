@@ -303,7 +303,7 @@
 
 })
 
-// 5. 이전/다음 탐색 버튼 표시 | 이전 탐색 기능(함수) 구현
+// 5-1 이전/다음 탐색 버튼 표시
 ;(() => {
   
   const carousel = document.querySelector('.carousel')
@@ -340,6 +340,141 @@
       // 다음 탐색 버튼의 hidden 속성 값을 false로 설정해라.
       nextButton.hidden = false
     }
+
+    const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const prevContent = selectedContent.previousElementSibling
+
+    if (!prevContent.previousElementSibling) prevButton.hidden = true
+
+    const distance = getComputedStyle(prevContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    prevContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+})
+
+// 5-2 로딩 시, 이전 탐색 버튼 감춤
+;(() => {
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  // 로딩 시, 사용자가 보는 화면에서 이전 탐색 버튼 감춤
+  prevButton.hidden = true
+
+  nextButton.addEventListener('click', () => {
+    if(prevButton.hidden) prevButton.hidden = false
+
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+  prevButton.addEventListener('click', () => {
+    if (nextButton.hidden) nextButton.hidden = false
+
+    const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const prevContent = selectedContent.previousElementSibling
+
+    if (!prevContent.previousElementSibling) prevButton.hidden = true
+
+    const distance = getComputedStyle(prevContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    prevContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+})
+
+// 5-3 로딩 시, 이전/다음 탐색 버튼 표시 설정
+// - 사용자가 활성 상태 클래스 이름을 설정하지 않을 경우 경고
+// - 첫 콘텐츠인 경우, 이전 탐색 버튼 감춤
+// - 마지막 콘텐츠인 경우, 다음 탐색 버튼 감춤
+;(() => {
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const contents = contentWrapper.querySelectorAll('.carousel__content')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  // 문서에서 콘텐츠를 순회(루프, Loop)해서
+  // 콘텐츠 중에 하나가 활성 상태 클래스 이름을 소유하고 있는 지 확인
+  // 확인된 경우 활성(선택된) 상태의 인덱스를 변수에 기억해보자.
+
+  // 활성 상태 인덱스를 기억할 변수를 정의하자
+  let selectedIndex = -1
+
+  // for 반복문 (모든 콘텐츠를 순환 활성 상태 확인)
+  for (let i = 0, l = contents.length; i < l; ++i) {
+    // 순환 중인 콘텐츠에 활성 상태 클래스 이름이 있는 지 확인
+    // console.log('순환 중')
+
+    if (contents.item(i).classList.contains(SELECTED_CLASSNAME)) {
+      // console.log(i + 1 + '번째 콘텐츠가 활성 클래스 이름을 가지고 있어요')
+      selectedIndex = i
+      // 활성 상태 클래스 이름을 가진 콘텐츠를 찾았으니 더 이상의 순환은 무의미하다!
+      // 그러니 멈춰라!!
+      break
+    }
+   
+  }
+  
+  // - 사용자가 활성 상태 클래스 이름을 설정하지 않을 경우 경고
+  // - 첫 콘텐츠인 경우, 이전 탐색 버튼 감춤
+  // - 마지막 콘텐츠인 경우, 다음 탐색 버튼 감춤
+
+  // 조건 처리
+  // 활성 클래스를 가진 요소의 인덱스가 -1이면
+  if (selectedIndex === -1) {
+    console.warn('어떤 캐러셀 콘텐츠에도 활성 상태를 나타내는 클래스 이름이 추가되지 않았습니다.')
+  } 
+  // 활성 클래스를 가진 요소의 인덱스가 0이면
+  else if (selectedIndex === 0) {
+    // 이전 탐색 버튼을 화면에서 감춰라!
+    prevButton.hidden = true
+  }
+  // 활성 클래스를 가진 요소의 인덱스가 모든 콘텐츠 갯수보다 1 작은 값이라면
+  // 활성 클래스를 가진 요소가 맨 마지막 요소라면?
+  else if (selectedIndex === contents.length - 1) {
+    nextButton.hidden = true
+  }
+  
+  nextButton.addEventListener('click', () => {
+    if(prevButton.hidden) prevButton.hidden = false
+
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+  prevButton.addEventListener('click', () => {
+    if (nextButton.hidden) nextButton.hidden = false
 
     const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
     const prevContent = selectedContent.previousElementSibling
