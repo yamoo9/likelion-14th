@@ -107,3 +107,6 @@
   button.addEventListener('click', changeButtonStyles)
 
 })()
+
+// 이벤트 리스너를 분리하든, 인라인으로 바로 연결해 사용하든
+// 변수 또는 this 대신에 리스너 함수에 인수로 전달되는 이벤트 객체를 활용
