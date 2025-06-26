@@ -77,9 +77,22 @@
 
     <script>
       {
+
         // 상품 카드 목록
         // `this` 키워드를 사용해 다음 요구사항을 구현합니다.
         // 1. 버튼 중 하나를 클릭하면 버튼이 포함된 카드(card) 제목을 콘솔 패널에 출력합니다.
+
+        const cardButtons = document.querySelectorAll('.card button')
+
+        for(const cardButton of cardButtons) {
+          cardButton.addEventListener('click', function() {
+            const cartTitle = this.parentElement.firstElementChild.textContent
+            console.log(cartTitle)
+
+            // const headlineElement = cardButton.parentElement.firstElementChild
+            // console.log(headlineElement.textContent)
+          })
+        }
       }
     </script>
   </body>
