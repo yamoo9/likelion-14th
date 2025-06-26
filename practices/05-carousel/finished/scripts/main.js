@@ -1388,4 +1388,125 @@
     }
   }
 
+})
+
+// 8-3. 이전/다음 탐색 버튼 표시 동기화 | 상태 동기화
+;(() => {
+  const carousel = document.querySelector('.carousel')
+  
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const contents = contentWrapper.querySelectorAll('.carousel__content')
+
+  const indicatorWrapper = carousel.querySelector('.carousel__indicators')
+  const indicators = indicatorWrapper.querySelectorAll('.carousel__indicator')
+
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  settingUpButtonHiddenStatus()
+  
+  nextButton.addEventListener('click', () => {
+    if(prevButton.hidden) prevButton.hidden = false
+
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+    const selectedIndicator = indicatorWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const nextIndicator = selectedIndicator.nextElementSibling
+    
+    selectedIndicator.classList.remove(SELECTED_CLASSNAME)
+    nextIndicator.classList.add(SELECTED_CLASSNAME)
+  })
+
+  prevButton.addEventListener('click', () => {
+    if (nextButton.hidden) nextButton.hidden = false
+
+    const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const prevContent = selectedContent.previousElementSibling
+
+    if (!prevContent.previousElementSibling) prevButton.hidden = true
+
+    const distance = getComputedStyle(prevContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    prevContent.classList.add(SELECTED_CLASSNAME)
+
+    // 사용자가 이전 탐색 버튼을 누르면
+    // 인디케이터 중에 현재 활성 상태인 것을 찾기
+    const selectedIndicator = indicatorWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const prevIndicator = selectedIndicator.previousElementSibling
+    
+    // 이전 선택된 인디케이터에서 활성 클래스 이름 제거
+    selectedIndicator.classList.remove(SELECTED_CLASSNAME)
+
+    // 현재 선택될 인디케이터에 활성 클래스 이름 추가
+    prevIndicator.classList.add(SELECTED_CLASSNAME)
+  })
+
+  for (const indicator of indicators) {
+    indicator.addEventListener('click', () => {
+      let selectedIndex
+
+      for(let i = 0, l = indicators.length; i < l; i += 1) {
+        if(indicators.item(i) === indicator) {
+          selectedIndex = i 
+          break
+        }
+      }
+
+      const activeContent = contents.item(selectedIndex) 
+      const distance = getComputedStyle(activeContent).getPropertyValue('left')
+      contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+      const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+      selectedContent.classList.remove(SELECTED_CLASSNAME)
+      activeContent.classList.add(SELECTED_CLASSNAME)
+
+      const selectedIndicator = indicatorWrapper.querySelector('.'+SELECTED_CLASSNAME)
+      selectedIndicator.classList.remove(SELECTED_CLASSNAME)
+      indicator.classList.add(SELECTED_CLASSNAME)
+
+      // selectedIndex 값이 처음(0)일 때 
+      // -> prevButton 숨긴다, nextButton 보인다
+      
+      // selectedIndex 값이 마지막 인덱스(indicators.length -1)일 때 
+      // -> prevButton 보인다, nextButton 숨긴다
+      
+      // 둘 다 아닐 때
+      // -> prevButton, nextButton 둘 다 보인다
+      
+
+    })
+  }
+
+  function settingUpButtonHiddenStatus() {
+    let selectedIndex = -1
+
+    for (let i = 0, l = contents.length; i < l; ++i) {
+      if (contents.item(i).classList.contains(SELECTED_CLASSNAME)) {
+        selectedIndex = i
+        break
+      }
+    }
+    
+    if (selectedIndex === -1) {
+      console.warn('어떤 캐러셀 콘텐츠에도 활성 상태를 나타내는 클래스 이름이 추가되지 않았습니다.')
+    } else if (selectedIndex === 0) {
+      prevButton.hidden = true
+    } else if (selectedIndex === contents.length - 1) {
+      nextButton.hidden = true
+    }
+  }
+
 })()
