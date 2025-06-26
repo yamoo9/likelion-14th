@@ -301,4 +301,57 @@
 
   })
 
+})
+
+// 5. 이전/다음 탐색 버튼 표시 | 이전 탐색 기능(함수) 구현
+;(() => {
+  
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  nextButton.addEventListener('click', () => {
+    // 사용자가 다음 탐색 버튼을 누르면
+    // 이전 탐색 버튼의 hidden 속성 값이 true인지 확인해서
+    // 만약 그 값이 true라면? hidden 속성 값을 false로 변경해라.
+    if(prevButton.hidden) prevButton.hidden = false
+
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+  // 이전 탐색 버튼을 사용자가 눌렀을 때
+  prevButton.addEventListener('click', () => {
+    // 만약 다음 탐색 버튼의 hidden 속성 값이 true라면?
+    if (nextButton.hidden) {
+      // console.log('다음 탐색 버튼의 hidden 속성이 true에요!')
+      // 다음 탐색 버튼의 hidden 속성 값을 false로 설정해라.
+      nextButton.hidden = false
+    }
+
+    const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const prevContent = selectedContent.previousElementSibling
+
+    if (!prevContent.previousElementSibling) prevButton.hidden = true
+
+    const distance = getComputedStyle(prevContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    prevContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
 })()
