@@ -84,4 +84,221 @@
     contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
   })
 
+})
+
+// 3-3. 선택된 상태 변경 | 다음 탐색 기능(함수) 구현
+;(() => {
+  
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  nextButton.addEventListener('click', () => {
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+    
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    // 선택된 상태 변경
+    // 이전 선택된 콘텐츠에서 활성 상태 클래스 이름 제거
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    // 현재 선택된 콘텐츠에 활성 상태 클래스 이름 추가
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+})
+
+// 3-4. 다음 탐색 버튼 감춤 | 다음 탐색 기능(함수) 구현
+;(() => {
+  
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  nextButton.addEventListener('click', () => {
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+    
+    // 다음 탐색 버튼 감춤
+    // if(!nextContent.nextElementSibling) {
+    //   console.log('다음에 표시될 콘텐츠는 존재하지 않아요')
+    //   nextButton.hidden = true
+    // }
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+})
+
+// 4-1. 현재/이전 콘텐츠 탐색 | 이전 탐색 기능(함수) 구현
+;(() => {
+  
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  nextButton.addEventListener('click', () => {
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+  prevButton.addEventListener('click', () => {
+    
+    // 현재 선택된 콘텐츠 찾기
+    const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    // 선택된 콘텐츠의 이전 콘텐츠 탐색
+    const prevContent = selectedContent.previousElementSibling
+
+  })
+
+})
+
+// 4-2. 이전 콘텐츠로 이동 | 이전 탐색 기능(함수) 구현
+;(() => {
+  
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  nextButton.addEventListener('click', () => {
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+  prevButton.addEventListener('click', () => {
+    
+    const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const prevContent = selectedContent.previousElementSibling
+
+    // 이전 콘텐츠로 이동
+    // prevContent로부터 거리를 계산해서 가져와야 함
+    const distance = getComputedStyle(prevContent).getPropertyValue('left')
+    // contentWrapper에 transform 스타일 지정
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+  })
+
+})
+
+// 4-3. 선택된 상태 변경 | 이전 탐색 기능(함수) 구현
+;(() => {
+  
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  nextButton.addEventListener('click', () => {
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+  prevButton.addEventListener('click', () => {
+    
+    const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const prevContent = selectedContent.previousElementSibling
+
+    const distance = getComputedStyle(prevContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    // 선택된 상태 변경
+    // 이전 선택된 콘텐츠에서 활성 상태 클래스 이름 제거
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    // 현재 선택된 콘텐츠에 활성 상태 클래스 이름 추가
+    prevContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+})
+
+// 4-4. 이전 탐색 버튼 감춤 | 이전 탐색 기능(함수) 구현
+;(() => {
+  
+  const carousel = document.querySelector('.carousel')
+  const contentWrapper = carousel.querySelector('.carousel__contents')
+  const prevButton = carousel.querySelector('[aria-label^="이전"]')
+  const nextButton = carousel.querySelector('[aria-label^="다음"]')
+
+  const SELECTED_CLASSNAME = 'is-selected'
+
+  nextButton.addEventListener('click', () => {
+    const selectedContent = contentWrapper.querySelector('.' + SELECTED_CLASSNAME)
+    const nextContent = selectedContent.nextElementSibling
+
+    if(!nextContent.nextElementSibling) nextButton.hidden = true
+
+    const distance = getComputedStyle(nextContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    nextContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
+  prevButton.addEventListener('click', () => {
+    
+    const selectedContent = contentWrapper.querySelector('.'+SELECTED_CLASSNAME)
+    const prevContent = selectedContent.previousElementSibling
+
+    // 이전 탐색 버튼 감춤
+    if (!prevContent.previousElementSibling) prevButton.hidden = true
+
+    const distance = getComputedStyle(prevContent).getPropertyValue('left')
+    contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
+
+    selectedContent.classList.remove(SELECTED_CLASSNAME)
+    prevContent.classList.add(SELECTED_CLASSNAME)
+
+  })
+
 })()
