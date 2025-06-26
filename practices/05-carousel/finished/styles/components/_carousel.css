@@ -1,5 +1,5 @@
 .carousel {
-  --width: 800px;
+  --width: 80vw;
 
   display: grid;
   grid-template-columns: 3rem var(--width) 3rem;

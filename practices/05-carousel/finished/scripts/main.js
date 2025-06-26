@@ -1465,6 +1465,28 @@
         }
       }
 
+      // selectedIndex 값이 처음(0)일 때 
+      // -> prevButton 숨긴다, nextButton 보인다
+      if (selectedIndex === 0) {
+        prevButton.hidden = true
+        nextButton.hidden = false
+      }
+
+      // selectedIndex 값이 마지막 인덱스(indicators.length -1)일 때 
+      // -> prevButton 보인다, nextButton 숨긴다
+      else if (selectedIndex === indicators.length -1) {
+        prevButton.hidden = false
+        nextButton.hidden = true
+      }
+
+      // 둘 다 아닐 때
+      // -> prevButton, nextButton 둘 다 보인다
+      else {
+        prevButton.hidden = false
+        nextButton.hidden = false
+      }
+
+
       const activeContent = contents.item(selectedIndex) 
       const distance = getComputedStyle(activeContent).getPropertyValue('left')
       contentWrapper.style.setProperty('transform', 'translateX(-'+ distance +')')
@@ -1476,16 +1498,6 @@
       const selectedIndicator = indicatorWrapper.querySelector('.'+SELECTED_CLASSNAME)
       selectedIndicator.classList.remove(SELECTED_CLASSNAME)
       indicator.classList.add(SELECTED_CLASSNAME)
-
-      // selectedIndex 값이 처음(0)일 때 
-      // -> prevButton 숨긴다, nextButton 보인다
-      
-      // selectedIndex 값이 마지막 인덱스(indicators.length -1)일 때 
-      // -> prevButton 보인다, nextButton 숨긴다
-      
-      // 둘 다 아닐 때
-      // -> prevButton, nextButton 둘 다 보인다
-      
 
     })
   }
