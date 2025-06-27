@@ -85,7 +85,7 @@ h1 {
       text-decoration: none;
 
       svg, span {
-        pointer-events: none;
+        /* pointer-events: none; */
         border: 2px dashed;
         padding: 10px;
       }

@@ -96,6 +96,27 @@
     
     if (target.matches('a[href="/news"]')) {
       console.log(target.getAttribute('href'))
+    } 
+    // else {
+    //   console.log(target.localName)
+    // }
+    
+  })
+})
+
+// 중첩된 요소 처림 2
+// <a>, <button> 요소 내부에 <svg>를 포함하는 경우
+// 2. element.closest(selector) 메서드 활용
+;(() => {
+  const linkList = document.querySelector('.link-list')
+
+  linkList.addEventListener('click', (e) => {
+    if (!e.defaultPrevented) e.preventDefault()
+    
+    const target = e.target.closest('a[href]')
+    
+    if (target) {
+      console.log(target.getAttribute('href'))
     } else {
       console.log(target.localName)
     }
