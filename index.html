@@ -93,9 +93,16 @@
 
     <hr />
 
-    <form method="GET" action="https://google.com">
+    <form data-learn="form" method="GET" action="https://google.com">
       <!-- 검색 필드 -->
-      <button type="submit">검색</button>
+      <div>
+        <label for="search-term">검색어</label>
+        <input type="search" name="search-term" id="search-term" placeholder="검색어를 입력" />
+      </div>
+      <div style="margin-block-start: 8px;">
+        <button type="submit">검색</button>
+        <button type="reset">초기화</button>
+      </div>
     </form>
 
     <script src="./assets/scripts/learn/45-event-default-action.js"></script>
