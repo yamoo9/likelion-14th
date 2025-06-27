@@ -80,29 +80,45 @@
 
     <button hidden type="button" data-name="change-bg-color">배경색 변경</button>
 
-    <a href="https://naver.com" target="_blank" rel="noopener noreferrer">
+    <a hidden href="https://naver.com" target="_blank" rel="noopener noreferrer">
       네이버
     </a>
 
     <hr />
     
-    <label for="agreement">
+    <label hidden for="agreement">
       <input type="checkbox" name="agreement" id="agreement" />
       동의합니다.
     </label>
 
     <hr />
 
-    <form data-learn="form" method="GET" action="https://google.com">
+    <form hidden data-learn="form" method="GET" action="https://google.com">
       <!-- 검색 필드 -->
       <div>
         <label for="search-term">검색어</label>
         <input type="search" name="search-term" id="search-term" placeholder="검색어를 입력" />
       </div>
+      <div>
+        <label for="email">이메일</label>
+        <input type="email" name="email" id="email" placeholder="user@company.io" />
+      </div>
       <div style="margin-block-start: 8px;">
         <button type="submit">검색</button>
         <button type="reset">초기화</button>
       </div>
+    </form>
+
+    <form hidden method="POST" action="http://localhost:5000/submit">
+      <div>
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div>
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <button type="submit">전송</button>
     </form>
 
     <script src="./assets/scripts/learn/45-event-default-action.js"></script>
