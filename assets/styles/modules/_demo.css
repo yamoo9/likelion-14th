@@ -77,10 +77,18 @@ h1 {
     padding: 20px;
 
     a {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       border: 2px solid;
       padding: 10px;
       text-decoration: none;
+
+      svg, span {
+        pointer-events: none;
+        border: 2px dashed;
+        padding: 10px;
+      }
     }
   }
 }
