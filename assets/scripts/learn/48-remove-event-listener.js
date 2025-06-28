@@ -18,7 +18,7 @@
     if (target) {
       // 이벤트 리스너 추가
       if (target.dataset.role === 'add-event') {
-        console.info('테스트 버튼에 이벤트 연결됨')
+        console.info('테스트 버튼에 이벤트 리스너 추가됨')
         testerButton.textContent = '이벤트 리스너 추가됨'
 
         // 테스트 버튼에 이벤트 리스너 추가
@@ -30,7 +30,7 @@
       
       // 추가된 이벤트 리스너 제거
       if (target.dataset.role === 'remove-event') {
-
+        console.info('테스트 버튼에 이벤트 리스너 제거됨')
         testerButton.textContent = '이벤트 리스너 제거됨'
         testerButton.removeEventListener('click', handleSameFunction)
       }
