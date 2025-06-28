@@ -1,6 +1,5 @@
 ### Custom ###
-NOTICE.md
-FEEDBACK.md
+__
 prettier.*
 06-modal-dialog-close
 07-accordion-event-delegation
@@ -8,6 +7,9 @@ prettier.*
 09-carousel-event-delegation
 10-off-canvas-animation
 11-modal-dialog-animation
+12-modal-dialog-animation-gsap
+13-accordion-animation
+14-carousel-animation
 
 ### Node ###
 # Logs
