@@ -10,6 +10,11 @@ prettier.*
 12-modal-dialog-animation-gsap
 13-accordion-animation
 14-carousel-animation
+15-accordion-useful-features
+16-tabs-useful-js-features
+17-carousel-useful-js-features
+18-accordion-refactor
+19-carousel-refactor
 
 ### Node ###
 # Logs

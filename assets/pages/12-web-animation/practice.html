@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8" />
+  <title>웹 애니메이션 (CSS & JavaScript)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      --padding: 20px;
+
+      overflow-y: scroll;
+      padding: var(--padding);
+    }
+    
+    button {
+      cursor: pointer;
+      user-select: none;
+      margin-block-end: 60px;
+      padding: 0.6em 1em;
+      text-transform: uppercase;
+    }
+
+    section {
+      margin-block-end: 60px;
+
+      h2 {
+        font-weight: 400;
+        font-size: 20px;
+        color: #363538;
+      }
+    }
+
+    .box {
+      --size: 40px;
+      --color: #443faf;
+      --radius: 100%;
+
+      inline-size: var(--size);
+      block-size: var(--size);
+      background-color: var(--color);
+      border-radius: var(--radius);
+    }
+
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+     
+    })
+  </script>
+</head>
+<body>
+
+  
+  <main lang="en">
+
+    <button type="button">toggle</button>
+
+    <section>
+      <h2>Linear</h2>
+      <div class="box"></div>
+    </section>
+    <section>
+      <h2>Ease</h2>
+      <div class="box"></div>
+    </section>
+    <section>
+      <h2>Ease in</h2>
+      <div class="box"></div>
+    </section>
+    <section>
+      <h2>Ease out</h2>
+      <div class="box"></div>
+    </section>
+    <section>
+      <h2>Ease in out</h2>
+      <div class="box"></div>
+    </section>
+
+  </main>
+
+</body>
+</html>
