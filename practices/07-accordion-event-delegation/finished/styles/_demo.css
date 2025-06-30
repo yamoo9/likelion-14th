@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  overflow-y: scroll;
   background-image: var(--body-gradient);
   color: var(--text-color);
   min-height: 100vh;
