@@ -74,8 +74,14 @@
         // 4. 초기화 기능
         //    다시 처럼으로 돌아가 코드가 실행되도록 구현
         resetButton.addEventListener('click', () => {
+          // 클릭 횟수 초기 값으로 설정
           clickedCount = 0
+
+          // 로드 시, click 이벤트 리스너가 logButton에 연결되었던 것처럼
+          // 초기화 기능 수행 시, 로드된 것처럼 다시 이벤트 리스너를 추가해야 하기 때문
           logButton.addEventListener('click', handleIncreaseClickCount)
+
+          // 아웃풋 엘리먼트 표시 값도 초기화 설정
           output.value = '클릭 횟수 출력'
         })
         
