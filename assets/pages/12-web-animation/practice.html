@@ -63,17 +63,17 @@
           translate: calc(90vw - var(--size) - var(--padding)) 0;
         }
         
-        /* animation-(name|duration|timing-function|delay) */
-        animation-name: animateX;
-        animation-duration: 1s;
-        animation-timing-function: linear;
-        /* animation-(iteration-count|direction|fill-mode|play-state) */
-        animation-iteration-count: infinite;
-        animation-direction: alternate; /* ping pong */
-        animation-fill-mode: forwards;
-        animation-play-state: paused;
-
+        
         .is-animation & {
+          /* animation-(name|duration|timing-function|delay) */
+          animation-name: animateX;
+          animation-duration: 1s;
+          animation-timing-function: linear;
+          /* animation-(iteration-count|direction|fill-mode|play-state) */
+          animation-iteration-count: 2;
+          animation-direction: alternate; /* ping pong */
+          animation-fill-mode: forwards;
+          /* animation-play-state: paused; */
           animation-play-state: running;
         }
       }
@@ -89,6 +89,8 @@
     document.addEventListener('DOMContentLoaded', () => {
       const button = document.querySelector('button')
       const main = document.querySelector('main')
+
+      // CSS Transition Event Types
 
       main.addEventListener('click', (e) => {
         const mainElement = e.currentTarget
@@ -130,6 +132,23 @@
         console.log('transition "cancel"', e.propertyName, e.target)
       })
 
+      // CSS Animation Types
+
+      main.addEventListener('animationstart', (e) => {
+        console.log('animation "start"', e.animationName, e.target)
+      })
+
+      main.addEventListener('animationiteration', (e) => {
+        console.log('animation "iteration"', e.animationName, e.target)
+      })
+
+      main.addEventListener('animationend', (e) => {
+        console.log('animation "end"', e.animationName, e.target)
+      })
+
+      main.addEventListener('animationcancel', (e) => {
+        console.log('animation "cancel', e.animationName, e.target)
+      })
 
     })
   </script>
