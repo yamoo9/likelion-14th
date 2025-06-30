@@ -53,21 +53,27 @@ body {
 }
 
 .banner__link {
+  --banner-link-begin: #ff905c;
+  --banner-link-end: #ef027d;
+
   display: inline-block;
   margin-top: 8px;
   padding: 6px 24px;
   border: 1px solid #ee1eb5;
   border-radius: 20px;
   background-color: #ff905c;
-  background: linear-gradient(to bottom, #ff905c 5%, #ef027d 100%);
+  background: linear-gradient(to bottom, var(--banner-link-begin) 5%, var(--banner-link-end) 100%);
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
   text-shadow: 0px 1px 0px #c70067;
+  transition: --banner-link-begin 0.3s ease-in,
+              --banner-link-end 0.3s ease-in;
 
   &:hover {
-    background: linear-gradient(to bottom, #ef027d 5%, #ff905c 100%);
+    --banner-link-begin: #ef027d;
+    --banner-link-end: #ff905c;
   }
 }
 
