@@ -57,7 +57,7 @@
         
         /* transtion-(property|duration|timing-function|delay) */
         transition-property: translate;
-        transition-duration: 1s;
+        transition-duration: 0.3s;
 
         .is-transition & {
           translate: calc(90vw - var(--size) - var(--padding)) 0;
@@ -109,6 +109,28 @@
           }
         }
       })
+
+      main.addEventListener('transitionrun', (e) => {
+        console.log('transition "run"', e.propertyName, e.target)
+        e.target.style.setProperty('scale', '1 0.85')
+        e.target.style.setProperty('filter', 'blur(2px)')
+      })
+
+      main.addEventListener('transitionstart', (e) => {
+        console.log('transition "start"', e.propertyName, e.target)
+      })
+
+      main.addEventListener('transitionend', (e) => {
+        console.log('transition "end"', e.propertyName, e.target)
+        e.target.style.setProperty('scale', '1')
+        e.target.style.setProperty('filter', 'blur(0)')
+      })
+
+      main.addEventListener('transitioncancel', (e) => {
+        console.log('transition "cancel"', e.propertyName, e.target)
+      })
+
+
     })
   </script>
 </head>
