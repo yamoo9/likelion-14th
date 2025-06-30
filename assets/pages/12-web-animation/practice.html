@@ -63,7 +63,6 @@
           translate: calc(90vw - var(--size) - var(--padding)) 0;
         }
         
-        
         .is-animation & {
           /* animation-(name|duration|timing-function|delay) */
           animation-name: animateX;
@@ -79,6 +78,18 @@
       }
     }
 
+    .rainbow {
+      animation: rainbow 6s alternate infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background: #ff004d; }
+      20% { background: #ff77ab; }
+      50% { background: #00e756; }
+      80% { background: #29adff; }
+      100% { background: #ff77ab; }
+    }
+
     @keyframes animateX {
       0% { transform: translateX(0) }
       100% { transform: translateX(80vw) }
@@ -89,6 +100,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       const button = document.querySelector('button')
       const main = document.querySelector('main')
+
+      main.querySelectorAll('.ball')
+        .forEach((ball) => ball.classList.add('rainbow'))
 
       // CSS Transition Event Types
 
