@@ -76,12 +76,26 @@
     settingTabindexControl()
   })
 
-  for (const indicator of indicators) {
-    indicator.addEventListener('click', () => {
+  // forEach() or for...of 문 사용
+  // 인디케이터 집합(수집한)을 순회해서 각 인디케이터 버튼에 이벤트 리스너 추가
+
+  // 이벤트 위임 (Event Delegation)
+  indicatorWrapper.addEventListener('click', (e) => {
+    // const target = e.target
+
+    // Element.closest(selector): Element
+    // 엘리먼트(요소)를 포함한 조상에서 전달된 선택자와 일치하는 가장 가까운 요소 찾아서 반환
+    // const indicatorButton = e.target.closest('.carousel__indicator')
+    // if (indicatorButton) {
+
+    // Element.matches(selector): boolean
+    // 엘리먼트(요소)와 전달된 선택자가 매칭(일치)하는 지 여부를 검사해 불리언 값 반환
+    if (e.target.matches('.carousel__indicator')) {
+      const indicatorButton = e.target
       let selectedIndex
 
       for (let i = 0, l = indicators.length; i < l; i += 1) {
-        if (indicators.item(i) === indicator) {
+        if (indicators.item(i) === indicatorButton) {
           selectedIndex = i
           break
         }
@@ -115,11 +129,12 @@
         '.' + SELECTED_CLASSNAME,
       )
       selectedIndicator.classList.remove(SELECTED_CLASSNAME)
-      indicator.classList.add(SELECTED_CLASSNAME)
+      indicatorButton.classList.add(SELECTED_CLASSNAME)
 
       settingTabindexControl()
-    })
-  }
+    }
+
+  })
 
   function settingUpButtonHiddenStatus() {
     let selectedIndex = -1
