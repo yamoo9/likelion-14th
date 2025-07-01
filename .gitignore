@@ -1,6 +1,7 @@
 ### Custom ###
 __
 prettier.*
+completed
 10-off-canvas-animation
 11-modal-dialog-animation
 12-modal-dialog-animation-gsap
@@ -10,7 +11,10 @@ prettier.*
 16-tabs-useful-js-features
 17-carousel-useful-js-features
 18-accordion-refactor
-19-carousel-refactor
+19-carousel-refactor-I
+20-carousel-refactor-II
+21-carousel-create-indicators
+22-calculator
 
 ### Node ###
 # Logs
