@@ -202,10 +202,14 @@
             //   }
             // },
             ease: 'power4.out',
+
+            // Callbacks
+            onStart: () => { console.log('start') },
+            onUpdate: () => { console.log('update') },
+            onComplete: () => { console.log('complete') },
           })
         }
       })
-
 
     // 루프문 사용
     // const boxes = document.querySelectorAll('.box')
