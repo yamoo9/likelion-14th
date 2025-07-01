@@ -1,4 +1,4 @@
-{
+;(() =>{
 
   // Web Animations API
   function playground() {
@@ -97,9 +97,15 @@
     gsap.to(o, {
       num: 100,
       color: 'cyan',
-      duration: 1,
-      // repeat: 1,
+      duration: 3,
+      // repeat: -1,
       // yoyo: true,
+      // ease: 'power4.in',
+      // ease: 'power4.out',
+      // ease: 'power4.inOut',
+      // ease: 'back.out',
+      // ease: 'bounce',
+      ease: 'steps(7)',
       onUpdate: renderCount,
       onComplete: () => {
         // console.log('finished gsap animation')
@@ -138,10 +144,32 @@
     //   onUpdate: draw 
     // })
 
+    // Easing
+    // none
+    // power(1,2,3,4).in
+    // power(1,2,3,4).out
+    // power(1,2,3,4).inOut
+
   }
 
   setTimeout(() => {
     playground()
     playgroundGSAP()
   }, 500)
-}
+})
+
+;(() => {
+
+  function animate() {
+
+    // gsap.from('.blue', { y: 100, opacity: 0, duration: 1 })
+    // gsap.from('.yellow', { y: 100, opacity: 0, duration: 1, delay: 1 })
+    // gsap.from('.green', { y: 100, opacity: 0, duration: 1, delay: 2 })
+
+    gsap.from('.box', { y: 100, stagger: 0.1, ease: 'power4.out' })
+
+  }
+
+  setTimeout(animate, 500)
+
+})()
