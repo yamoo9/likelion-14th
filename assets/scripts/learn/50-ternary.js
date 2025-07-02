@@ -3,14 +3,14 @@
 //    - 3항 연산자 (표현)식 (Ternary)
 // --------------------------------------------------------------------------
 
-{
+const user = {
+  name: '조현주',
+  age: 23,
+  role: '관리자',
+}
 
-  const user = {
-    name: '조현주',
-    age: 23,
-    role: '손님',
-  }
-  
+// 삼항 연산자 식
+;(() => {  
   // 조건문(Conditional Statement)
   if (user.role === '관리자') {
     console.log('서비스의 모든 권한을 가지므로, 어떤 일이든 가능합니다.')
@@ -34,4 +34,38 @@
     ? console.log('서비스의 모든 권한을 가지므로, 어떤 일이든 가능합니다.') 
     : console.warn('서비스 관리자가 아니므로, 접근이 불가합니다.')
 
-}
+})
+
+// 문(Statement) vs. 표현식(Expression)
+;(() => { 
+  
+  {
+    let message = ''
+
+    // 조건문 (Conditional Statement)
+    // 문은 값을 반환하지 않는다.
+    // console.log(if (user.role === '관리자') { message = '서비스의 모든 권한을 가지므로, 어떤 일이든 가능합니다.' } else { message = '서비스 관리자가 아니므로, 접근이 불가합니다.' })
+    
+    if (user.role === '관리자') {
+      message = '서비스의 모든 권한을 가지므로, 어떤 일이든 가능합니다.'
+    } else {
+      message = '서비스 관리자가 아니므로, 접근이 불가합니다.'
+    }
+
+    console.group('조건문')
+    console.log('%c'+message, 'color: #5856d6; font-weight: 700;')
+    console.groupEnd()
+  }
+
+  {
+    // 조건식 (Conditional EXpression)
+    let message = user.role === '관리자' 
+      ? '서비스의 모든 권한을 가지므로, 어떤 일이든 가능합니다.' 
+      : '서비스 관리자가 아니므로, 접근이 불가합니다.'
+    
+    console.group('조건식')
+    console.log('%c'+message, 'color: #e54d26; font-weight: 900; background-color: #101010;')
+    console.groupEnd()
+  }
+
+})()
