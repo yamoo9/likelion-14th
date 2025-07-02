@@ -5,12 +5,14 @@
   left: -14rem;
   width: 14rem;
   background-color: var(--menu-background-color);
+  transition: translate 0.3s var(--ease-in-out-expo);
 }
 
 .site-container {
   padding-top: 3rem;
   padding-left: 2.5rem;
   max-width: 33rem;
+  transition: translate 0.3s var(--ease-in-out-expo);
 }
 
 .offsite-is-open {
