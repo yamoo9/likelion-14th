@@ -138,4 +138,26 @@
     font-size: 40px;
   `
 
+})
+
+// 실습
+;(() => {
+  
+  const practice = document.querySelector('.practice')
+  const button = practice.querySelector('[type="button"]')
+  const form = practice.querySelector('form')
+  const para = practice.querySelector('p')
+
+  button.addEventListener('click', () => {
+    const username = form.elements.username.value.trim()
+    const mealValue = form.elements.meal.value
+    const meal = mealValue === 'breakfast' 
+                  ? '아침' 
+                  : mealValue === 'lunch' 
+                    ? '점심' 
+                    : '저녁'
+
+    para.textContent = `안녕! ${username}. ${meal} 먹었어?`
+  })
+
 })()
