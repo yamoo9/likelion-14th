@@ -95,7 +95,7 @@ const user = {
       warningMessage = '19세 미만이므로 출입이 불허합니다. ⚠️'
     }
 
-    // console.log(warningMessage)
+    console.log(warningMessage)
 
     let 조건1 = !true,
       조건2 = false,
