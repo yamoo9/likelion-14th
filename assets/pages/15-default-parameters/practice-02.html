@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8" />
+  <title>매개변수 기본값</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  
+  <div id="practice2">
+    <form>
+      <div>
+        <label for="username">이름</label>
+        <input id="username" type="text" name="username" required />
+      </div>
+      <div>
+        <label for="usermail">이메일</label>
+        <input id="usermail" type="email" name="usermail" required />
+      </div>
+      <div>
+        <label for="userlocation">거주지</label>
+        <input id="userlocation" type="text" name="userlocation" value="서울" />
+      </div>
+      <button type="submit">생성</button>
+    </form>
+    
+    <table>
+      <caption>인명부</caption>
+      <thead>
+        <tr>
+          <th scope="col">이름</th>
+          <th scope="col">이메일</th>
+          <th scope="col">거주지</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{이름}</td>
+          <td>{이메일}</td>
+          <td>{거주지}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+
+  <script>
+    {
+      // ------------------------------------------------------------------------------
+      // 사용자 정보 생성
+      // ------------------------------------------------------------------------------
+      // 사용자 정보(이름, 이메일, 거주지)를 입력하고 생성 버튼을 누르면 화면의 인명부에 추가되되록 구현합니다.
+      // - 폼의 `submit` 이벤트를 리스닝하는 핸들러를 작성합니다.
+      // - createUser 함수를 작성해 활용합니다. (함수 매개변수 기본값 설정)
+      // - render 함수를 작성해 테이블의 `<tbody>` 요소를 업데이트합니다.
+
+      
+      
+    }
+  </script>
+</body>
+</html>
