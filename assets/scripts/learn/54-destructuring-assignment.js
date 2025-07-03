@@ -152,4 +152,35 @@
   const colorHexCode = rgbToHex([255, 120, 120])
   console.log(colorHexCode)
 
+})
+
+// 구조 분해 할당된 변수의 기본 값 설정
+;(() => {
+  
+  // 배열 구조 분해 할당 기본 값 설정 예
+  const emojiList = [
+    '😎',
+    '🤖'
+  ]
+
+  // 배열 구조 분해 할당
+  const [fisrtEmoji, secondEmoji = '✌🏻'] = emojiList
+  console.log(fisrtEmoji)
+  console.log(secondEmoji)
+  
+
+  // 객체 구조 분해 할당 기본 값 설정 예
+  const course = {
+    name: 'JavaScript 펀더멘탈' 
+  }
+
+  // 객체 구조 분해 할당
+  let { name, price = 30_000, instructor = '야무' } = course
+  // if (price === undefined) price = 30000
+  // if (instructor === undefined) instructor = '야무'
+
+  console.log(name)
+  console.log(price)
+  console.log(instructor)
+
 })()
