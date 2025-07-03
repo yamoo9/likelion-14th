@@ -78,4 +78,81 @@
   // console.log(Array.from(mainChildren))
   // console.log([...mainChildren])
 
+})
+
+// 나머지 매개변수 (Rest Parameters)
+;(() => {
+
+  // 전개 구문(...) : 배열 데이터를 다른 배열 내부에 전개 -> 배열 ~ 각 원소로 펼친다.
+  // 나머지 매개변수(...) : 외부에서 전달된 인수들을 하나로 모아 배열 객체로 제공 -> 각 원소 ~ 배열로 생성 
+
+  // 나머지 매개변수 활용
+  // const logNames = (firstName, secondName, ...restNames) => {
+  const logNames = (...names) => {
+    // for (const name of names) {
+    //   console.log(name)
+    // }
+
+    // names.forEach((n) => console.log(n))
+
+    const [, , , ...restNames] = names
+
+    console.log(restNames)
+  }
+
+  logNames(
+    '진형',
+    '민희',
+    '수영',
+    '진구',
+    '초영',
+    '영주',
+    '주효',
+  )
+
+})
+
+// 객체 합성
+;(() => {
+
+  /* global gsap */
+  
+  const initVars = { opacity: 0, rotateX: -480 }
+
+  // gsap.timeline({ defaults: { ... } })
+
+  const commonVars = { opacity: 1, rotateX: 0 }
+  // const h1Vars = { scale: 1, delay: 0.5 }
+  // const pVars = { y: -50, color: '#551b8b', scale: 1.2, delay: 0.8 }
+
+  // // console.log(Object.assign({}, commonVars, h1Vars))
+  // console.log({ ...commonVars, ...h1Vars })
+  // console.log(commonVars)
+  // console.log(h1Vars)
+
+  gsap.set('h1, p', initVars)
+  gsap.to('h1', { ...commonVars, scale: 1, delay: 0.5 })
+  gsap.to('p', { ...commonVars, y: -50, color: '#551b8b', scale: 1.2, delay: 0.8 })
+
+})
+
+// 원본 객체 유지, 새로운 객체(합성된) 사용
+;(() => {
+  const fruitBlender = {
+    blendKiwi: true,
+    blendMango: true,
+  }
+
+  const megaBlender = {
+    blendGuava: true,
+  }
+
+  const neoBlender = {
+    ...megaBlender,
+    ...fruitBlender
+  }
+
+  console.log(neoBlender)
+  console.log(megaBlender)
+  console.log(fruitBlender)
 })()
