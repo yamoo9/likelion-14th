@@ -54,8 +54,58 @@
       // - createUser 함수를 작성해 활용합니다. (함수 매개변수 기본값 설정)
       // - render 함수를 작성해 테이블의 `<tbody>` 요소를 업데이트합니다.
 
+      const practice = document.getElementById('practice2')
+      const form = practice.querySelector('form')
+      const table = practice.querySelector('table')
       
-      
+      form.addEventListener('submit', handleRenderTable)
+
+      function handleRenderTable(e) {
+        // 브라우저 기본 작동 방지
+        e.preventDefault()
+
+        // 폼 컨트롤 요소들을 수집
+        const formElements = e.currentTarget.elements
+        // 구조 분해 할당 수집된 요소들의 순서에 맞춰 분해된 요소를 변수에 할당
+        const [usernameInput, usermailInput, userlocationInput] = formElements
+        // 사용자가 입력한 값 읽기
+        const usernameValue = usernameInput.value.trim()
+        const usermailValue = usermailInput.value.trim()
+        const userlocationValue = userlocationInput.value.trim()
+        // 사용자가 입력한 값 확인
+        // console.log(usernameValue)
+        // console.log(usermailValue)
+        // console.log(userlocationValue)
+        // 새로운 사용자 생성
+        const newUser = createUser(usernameValue, usermailValue, userlocationValue)
+        
+        // 테이블 렌더링 (DOM 업데이트 -> 화면 변경)
+        render(newUser)
+
+        // 초기화
+        usernameInput.value = ''
+        usermailInput.value = ''
+        userlocationInput.value = '서울'
+      }
+
+      function render({ name, email, location }) {
+        const [nameCell, emailCell, locationCell] = table.querySelectorAll('tbody td')
+        
+        nameCell.textContent = name
+        emailCell.textContent = email
+        locationCell.textContent = location
+      }
+
+      function createUser(nameValue, emailValue, locationValue = '서울') {
+        const user = {
+          name: nameValue,
+          email: emailValue,
+          location: locationValue,
+        }
+
+        return user
+      }
+
     }
   </script>
 </body>

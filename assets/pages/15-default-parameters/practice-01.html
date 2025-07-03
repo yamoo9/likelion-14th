@@ -38,9 +38,7 @@
 
       renderView()
       
-      practice.addEventListener('input', () => {
-        renderView()
-      })
+      practice.addEventListener('input', renderView)
 
       function renderView() {
         const incomeValue = practice.querySelector('#income').value
