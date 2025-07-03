@@ -10,7 +10,7 @@
   <div id="practice1">
     <div>
       <label for="income">소득</label>
-      <input type="number" id="income" value="10_000" />
+      <input type="number" id="income" value="10000" />
     </div>
     <div>
       <label for="taxRate">세율</label>
@@ -31,7 +31,33 @@
       // 사용자가 소득(Income) 및 세율(Tax Rate) 값을 변경하면 세금을 계산해 화면에 출력하도록 구현합니다.
       // - calcTaxRate 함수를 작성해 활용합니다. (함수 매개변수 기본값 설정)
       // - 입력과 동시에 화면을 업데이트 할 때는 `input` 이벤트를 사용합니다.
+
+      const DEFAULT_TAX_RATE = 0.033
+      const practice = document.getElementById('practice1')
+      const output = practice.querySelector('output')
+
+      renderView()
       
+      practice.addEventListener('input', () => {
+        renderView()
+      })
+
+      function renderView() {
+        const incomeValue = practice.querySelector('#income').value
+        const taxRateValue = practice.querySelector('#taxRate').value
+        const tax = calcTaxRate(incomeValue, taxRateValue)
+        
+        output.querySelector('.income').textContent = incomeValue
+        output.querySelector('.tax-rate').textContent = taxRateValue
+        output.querySelector('.tax').textContent = tax
+      }
+
+      function calcTaxRate(income, taxRate = DEFAULT_TAX_RATE) {
+        return income * taxRate
+      }
+
+      const tax = calcTaxRate(10000)
+      console.log(tax)
       
     }
   </script>
