@@ -10,7 +10,7 @@
   <div id="practice2">
     <div class="location">
       <strong>현재 위치</strong>
-      <p id="position"></p>
+      <p id="position">{ x: {위도}, y: {경도} }</p>
     </div>
     <table class="location-info">
       <caption>사용자 위치 정보</caption>
@@ -36,7 +36,21 @@
       // -------------------------------------------------------------------------
       // 배열로 주어진 좌표에서 `x`, `y`를 구조 분해 할당으로 꺼내어 위치 정보를 DOM에 출력해 보세요.
       
-      const coords = [350, 180] // [위도(latitude, 경도(longitude)]
+      const coords = [270, 114] // [위도(latitude, 경도(longitude)]
+
+      const practice = document.getElementById('practice2')
+      const position = document.getElementById('position')
+      const table = practice.querySelector('.location-info')
+
+      // 구조 분해 할당
+      const [latitude, longitude] = coords
+      
+      // DOM 업데이트 (화면 변경)
+      position.textContent = `{ x: ${latitude}, y: ${longitude} }`
+
+      const [latitudeCell, longitudeCell] = table.querySelectorAll('td')
+      latitudeCell.textContent = latitude
+      longitudeCell.textContent = longitude
       
     }
   </script>
