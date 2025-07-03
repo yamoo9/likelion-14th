@@ -26,10 +26,25 @@
       // 배열 전개
       // ------------------------------------------------------------------------------
       // 두 개의 입력 필드에 숫자 배열을 쉼표로 입력하고 버튼을 클릭하면 두 배열을 하나로 결합해 출력하세요.
-      // - 두 배열을 전개 연산자로 병합합니다.
+      // - 두 배열을 전개(...) 연산자로 병합합니다.
       // - 병합된 배열을 `<output>` 요소 콘텐츠로 출력합니다.
       
-      
+      const practice = document.getElementById('practice1')
+
+      practice.addEventListener('click', (e) => {
+        const button = e.target.closest('button')
+        if (!button) return
+
+        let [array1, array2] = practice.querySelectorAll('input')
+        array1 = array1.value.trim().split(',')
+        array2 = array2.value.trim().split(',')
+
+        const outputArray = [...array1, ...array2]
+
+        practice.querySelector('output').value = outputArray.toString()
+
+      })
+
     }
   </script>
 </body>
