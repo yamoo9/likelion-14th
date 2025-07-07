@@ -35,6 +35,16 @@
     const matchIndexUser = users[foundMatchIndex]
     console.log(matchIndexUser)
 
+  })
+
+  // 실습 2. 국적 일치, 사용자 이름 출력
+  ;(() => {
+    
+    let nationality = '아프리카'
+
+    const foundUser = users.find(user => user.nationality === nationality)
+    console.log(foundUser ? foundUser.name : '그런 사람 없습니다.')
+
   })()
 
 }
