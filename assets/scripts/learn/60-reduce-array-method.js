@@ -124,6 +124,9 @@
 
   // [질문] for 문 vs. reduce() 메서드 내용 한번 더 설명해주실 수 있을까요?
 
+  
+
+
   // for문 구현
   {
     let templateString = ''
