@@ -2,6 +2,7 @@
 // 📌 유용한 JS 기능 - 배열의 유용한 메서드
 // --------------------------------------------------------------------------
 
+// findIndex() 메서드
 ;(() => {
   // Array의 .findIndex() 메서드
 
@@ -21,5 +22,19 @@
   })
 
   console.log(foundIndex)
+
+})
+
+
+// find() 메서드
+;(() => {
+  const people = [
+    { id: 1, name: '지훈' },
+    { id: 2, name: '아름' },
+    { id: 3, name: '한영' },
+  ]
+
+  const hanyuoung = people.find((person) => person.name === '반영')
+  console.log(hanyuoung)
 
 })()
