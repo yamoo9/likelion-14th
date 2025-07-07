@@ -143,4 +143,46 @@
     // return undefined
   }
 
+})
+
+// 용도별 함수 작성 방법 비교: forEach() vs. map()
+;(() => {
+
+  const list = ['하나', '둘', '셋']
+  
+  const forEachResult = forEach(list, (item, index, list) => {
+    console.log(list)
+    console.log(index, item)
+  })
+  console.log({forEachResult})
+
+  const mapResult = map(list, (item, index, list) => {
+    console.log(list)
+    console.log(index, item)
+    return item.repeat(2)
+  })
+  console.log({mapResult})
+
+  console.log({list})
+
+  function forEach(list, callback) {
+    for(let index = 0; index < list.length; index = index + 1) {
+      const item = list.at(index)
+      callback(item, index, list)
+    }
+
+    // return undefined
+  }
+  
+  function map(list, callback) {
+    const mapResult = []
+
+    for(let index = 0, length = list.length; index < length; index += 1) {
+      const item = list.at(index)
+      mapResult.push(callback(item, index, list))
+    }
+
+    return mapResult
+  }
+
 })()
