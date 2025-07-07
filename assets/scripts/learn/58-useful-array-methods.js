@@ -205,7 +205,7 @@
   // const squartNumbers = filterNumbers.map(n => n ** 2)
   // console.log(squartNumbers) // [4, 9]
 
-})()
+})
 
 // GSAP 메서드 체이닝
 ;(() => {
@@ -216,7 +216,8 @@
   })
 
   tl
-    .to('h1', { y: 0, scale: 1 }) // Timeline { to, from, set, call, ... }
-    .to('p', { y: 0, scale: 1 }, '+=0.4')
+    .from('h1', { }) // Timeline { to, from, set, call, ... }
+    .from('p', { }, '-=0.2')
+    .to('p', { y: -36, opacity: 1, scale: 1 })
 
-})
+})()
