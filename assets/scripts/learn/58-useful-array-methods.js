@@ -25,7 +25,6 @@
 
 })
 
-
 // find() 메서드
 ;(() => {
   const people = [
@@ -36,5 +35,25 @@
 
   const hanyuoung = people.find((person) => person.name === '반영')
   console.log(hanyuoung)
+
+})
+
+// filter() 메서드
+;(() => {
+  const people = [
+    { id: 1, name: '최지훈' },
+    { id: 2, name: '박아름' },
+    { id: 3, name: '박한영' },
+    { id: 4, name: '강주선' },
+    { id: 5, name: '김박군' },
+  ]
+
+  // 사람들 중에 성이 박으로 시작하는 사람들(집합, 배열)을 거르고 싶어요!
+  // 걸러낸다. 필터링(filtering)한다.
+  const parkPersons = people.filter((person) => person.name.startsWith('박'))
+  console.log(parkPersons)
+
+  const unknownPersons = people.filter((p) => p.name === '이한준')
+  console.log(unknownPersons)
 
 })()
