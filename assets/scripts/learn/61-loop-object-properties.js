@@ -85,8 +85,21 @@
   }
   
   for (const value of Object.values(cssMap)) {
-    console.log(value)
+    // console.log(value)
   }
+
+  // Object.entries(cssMap).forEach((keyValue/* [key, value] */) => {
+  Object.entries(cssMap).forEach(([key, value]) => {
+    // console.log(key, value)
+  })
+  
+  Object.keys(cssMap).forEach((key) => {
+    console.log(key)
+  })
+
+  Object.values(cssMap).forEach((value) => {
+    console.log(value)
+  })
 
 })()
 
