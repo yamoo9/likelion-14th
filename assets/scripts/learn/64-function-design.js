@@ -37,6 +37,7 @@
 
 // 매핑(mapping) 기능을 가진 함수 구현
 ;(() => {
+  
   function map(likeArray, callback) {
     // 명령형 코드
     // 배열의 map() 메서드와 유사한 기능 구현
