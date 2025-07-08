@@ -273,7 +273,7 @@ function getKiwiCount(fruitsBasket) {
     console.log(subjectCountObject)
   })()
 
-})()
+})
 
 
 // --------------------------------------------------------------------------
@@ -297,16 +297,18 @@ function getKiwiCount(fruitsBasket) {
     { id: 10, name: '배예진', email: 'yejin.bae@example.com', isPresent: false },
   ]
   
-  console.log(students)
-
-  // 1. 명령형 코드
-  ;(() => {
-    
-  })()
-
   // 2. 선언적 코드
   ;(() => {
     
+    const attendance = students.filter(({ isPresent }) => isPresent)
+    console.log(attendance.length)
+
+  })()
+
+  // 1. 명령형 코드
+  ;(() => {
+    // 새 배열 생성 변수에 참조
+    // for문 사용 순환해서 조건문으로 걸러낸 각 항목을 생성한 배열의 원소로 추가
   })
 
 })
@@ -328,16 +330,22 @@ function getKiwiCount(fruitsBasket) {
     { id: 10, name: '쿠션 팩트', stock: 8, price: 35000 },
   ]
 
-  console.log(products)
-
-  // 1. 명령형 코드
-  ;(() => {
-    
-  })()
+  // console.log(products)
 
   // 2. 선언적 코드
   ;(() => {
     
+    const filteredProducts = products.filter(({ stock }) => stock > 0)
+      
+    console.log(filteredProducts)
+
+    filteredProducts.forEach(({ name }) => console.log(name))
+
+  })()
+
+  // 1. 명령형 코드
+  ;(() => {
+    
   })
 
-})
+})()
