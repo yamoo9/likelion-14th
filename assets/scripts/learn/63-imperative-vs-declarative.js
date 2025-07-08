@@ -51,7 +51,7 @@ function getKiwiCount(fruitsBasket) {
 })
 
 // --------------------------------------------------------------------------
-// 📌 리마인드
+// 📌 유용한 JS 기능 리마인드
 // --------------------------------------------------------------------------
 //    - .findIndex()
 //    - .find()
@@ -71,9 +71,14 @@ function getKiwiCount(fruitsBasket) {
   const numbers = [10, 11, 12, 13, 14, 15]
 
   // 13의 인덱스 가져오기
+  // 명령형 코드: for 문을 사용
+  // 선언적 코드: 배열 객체의 findIndex() 메서드 사용
   ;(() => {
     
-  })()
+    let foundIndex = numbers.findIndex((n) => n === 13)
+    console.log(foundIndex)
+
+  })
 
   const users = [
     { name: '성호', age: 17, role: '고등학생' },
@@ -84,25 +89,67 @@ function getKiwiCount(fruitsBasket) {
   ]
 
   // "나설" 이름 찾기
+  // 명령형 코드: for문 사용
+  // 선언적 코드: 배열 객체의 find() 메서드 사용
   ;(() => {
     
-  })()
+    const foundUser = users.find((user) => user.name === '나설')
+    console.table(foundUser)
 
-  // 학생만 걸러 새로운 집단 생성
+  })
+
+  // 학생만 걸러 새로운 학생 집단 생성
+  // 명령형 코드: for문 사용
+  // 선언적 코드: 배열 객체의 filter() 메서드 사용
   ;(() => {
     
-  })()
+    const students = users.filter(({ role }) => role.endsWith('학생'))
+    console.log(students)
+
+  })
 
   // 사용자 이름 콘솔 패널에 출력
+  // 명령형 코드: for문 사용
+  // 선언적 코드: 배열 객체의 forEach() 메서드 사용
   ;(() => {
     
-  })()
+    users.forEach(({ name }) => console.log(name))
+
+  })
   
   // 사용자 집단을 순환해 
   // 국적 추가 후, 새 집단 생성
+  // 명령형 코드: for문 사용
+  // 선언적 코드: 배열 객체의 map() 메서드 사용
   ;(() => {
+
+    const korean = users.map((user) => {
+      // user 객체 복제해서 새로운 사용자를 생성
+
+      // 전개 구문을 사용해 복제된 새 사용자 생성
+      // 생성된 새 사용자의 국적 추가
+      const newUser = { ...user, nationality: '대한민국' }
+      
+      // 명령형 코드: for...in문 사용
+      ;(() => {
+        const newUser = {}
+
+        for (const key in user) {
+          // const value = user[key]
+          newUser[key] = user[key]
+        }
+        // 사용자를 복제한 새 사용자에게 국적 추가
+        newUser.nationality = '대한민국'
+      })
+
+      // 생성된 사용자를 반환
+      return newUser
+    })
+
+    console.log(korean)
+    console.log(users)
     
-  })()
+  })
 
   const techTerms = [
     {
@@ -132,32 +179,41 @@ function getKiwiCount(fruitsBasket) {
   ]
 
   // 템플릿 코드 작성
-  // map(), join() 활용
+  // 명령형 코드: for문 사용
+  // 선언적 코드: 배열 객체의 map() + join() 메서드 사용
   ;(() => {
     
     const descListTemplate = `
-      <dl>
-        <dt>{용어}</dt>
-        <dd>{설명}</dd>
+      <dl class="tech-terms">
+        ${techTerms
+            .map(({ term, description }) => `<dt>${term}</dt><dd>${description}</dd>`)
+            .join('')
+        }
       </dl>
     `
 
-  })()
+    console.log(descListTemplate)
+
+  })
   
   // 템플릿 코드 작성
-  // reduce() 활용
+  // 명령형 코드: for문 사용
+  // 선언적 코드: 배열 객체의 reduce() 메서드 사용
   ;(() => {
     
     const descListTemplate = `
       <dl>
-        <dt>{용어}</dt>
-        <dd>{설명}</dd>
+        ${techTerms.reduce((templateCode, { term, description }) => {
+          return `${templateCode}<dt>${term}</dt><dd>${description}</dd>`
+        }, '')}
       </dl>
     `
 
-  })()
+    console.log(descListTemplate)
 
-  const timetable = {
+  })
+
+  const timeTable = {
     '월요일': ['수학', '영어', '체육'],
     '화요일': ['국어', '사회', '음악'],
     '수요일': ['과학', '미술', '수학'],
@@ -169,6 +225,52 @@ function getKiwiCount(fruitsBasket) {
   // reduce() 활용
   ;(() => {
     
+    // 타임테이블의 요일별 과목 배열 값들로 구성된 배열 생성
+    const nestedSubjecArray = Object.values(timeTable)
+
+    // 과목 배열 값으로 구성된 배열을 평탄화
+    // 평탄화(Flatting)란?
+    // [[1, 2], [3, 4]] -> [1, 2, 3, 4]
+    const flattedSubjectArray = nestedSubjecArray.reduce((result, subjectArray) => {
+      // acc = ['수학', '영어', '체육', '국어', '사회', '음악']
+      // return [...['수학', '영어', '체육', '국어', '사회', '음악'], ...['과학', '미술', '수학']]
+      return [...result, ...subjectArray]
+    }, [])
+
+    // 평탄화된 과목 배열을 순환해 과목별 갯수를 가진 객체 생성
+    // { 국어: 2, 수학: 2, ... }
+    const subjectCountObject = flattedSubjectArray.reduce((accumulator, subjectKey) => {
+      // o = {}
+      // o[key] = key
+      // o["수학"] = 1 -> { '수학': 1 }
+      // o = { '수학': 1 }
+      // o["수학"] = o["수학"] + 1 -> { '수학': 2 }
+      // o["수학"] += 1 -> { '수학': 2 }
+      if (!accumulator[subjectKey]) {
+        accumulator[subjectKey] = 1
+      } else {
+        accumulator[subjectKey] += 1
+      }
+
+      return accumulator
+    }, {})
+
+    console.log(subjectCountObject)
+
+  })
+
+  ;(() => {
+
+    const subjectCountObject = Object
+      .values(timeTable)
+      .flat()
+      .reduce((object, key) => {
+        if (!object[key]) object[key] = 1 
+        else object[key] += 1
+        return object
+      }, {})
+
+    console.log(subjectCountObject)
   })()
 
 })()
