@@ -346,12 +346,15 @@
         })
 
         const fragment = document.createDocumentFragment()
-        fragment.append(...reviews)
+        fragment.append(...reviews) // fragment { children: [li, li, li, li] }
 
-        document.querySelector('#practice3 button')
-          .addEventListener('click', (e) => {
-            e.currentTarget.nextElementSibling.prepend(...fragment.children)
-          })
+        const button = document.querySelector('#practice3 button')
+
+        button.addEventListener('click', (e) => {
+          const button = e.currentTarget
+          const comments = button.nextElementSibling // ul.comments
+          comments.prepend(...fragment.children)
+        })
 
       })()
     </script>

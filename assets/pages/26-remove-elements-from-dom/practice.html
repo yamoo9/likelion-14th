@@ -65,6 +65,10 @@
         
         li {
           border-color: currentColor;
+
+          &:has([aria-disabled="true"]) {
+            color: hsla(0 0% 15% / 0.5);
+          }
         }
 
         button {
@@ -77,9 +81,15 @@
           inline-size: 20px;
           block-size: 20px;
 
-          &:hover {
-            background-color: hsla(200 50% 50% / 20%);
+          &[aria-disabled="true"] {
+            cursor: not-allowed;
           }
+
+          &:hover:not([aria-disabled="true"]) {
+            background-color: hsla(200 50% 50% / 50%);
+          }
+
+          
 
           svg {
             pointer-events: none;
@@ -177,6 +187,55 @@
       // - 비활성 상태인 경우, 초점은 이동되나 작동되지 않아야 함
       ; (() => {
         
+        const practice = document.getElementById('practice2')
+
+        // 이벤트 위임
+        practice.addEventListener('click', ({ target }) => {
+          // 이벤트 대상(버튼) 찾기
+          const button = target.closest('button')
+          
+          // 이벤트 대상이 비활성 상태인지 여부
+          // 이벤트 대상이 버튼이 아닌 경우, 거짓으로 평가
+          // 옵셔널 체이닝(?.)을 사용해 대상이 null일 경우 거짓으로 평가
+          const isButtonDisabled = button?.getAttribute('aria-disabled') === 'true'
+          
+          // 이벤트 대상이 버튼이 아니거나,
+          // 이벤트 대상이 버튼이지만 비활성 상태인 경우 
+          // 빠른 반환으로 함수 종료
+          if (!button || isButtonDisabled) return
+          
+          // 이동할 리뷰 목록 아이템 (클릭한 버튼의 부모 요소)
+          const moveItem = button.parentElement
+          
+          // 대상 리뷰 목록 아이템 (클릭한 버튼의 부모 요소의 이전 요소)
+          const targetItem = moveItem.previousElementSibling
+
+          // 대상 리뷰 목록 아이템이 없을 경우 함수 종료
+          if (!targetItem) return
+          
+          // 대상 리뷰 목록 아이템의 이전 요소 존재 여부
+          const targetItemIsFirst = !targetItem.previousElementSibling
+
+          // 대상 리뷰 목록 아이템의 이전 위치로 이동
+          targetItem.before(moveItem)
+          
+          // 대상 리뷰 목록 아이템이 가장 상위 위치였다면
+          if (targetItemIsFirst) {
+            // 이동한 리뷰 목록 아이템의 버튼 비활성 상태 변경 (비활성 상태로)
+            button.setAttribute('aria-disabled', 'true')
+            // 대상 리뷰 목록 아이템의 버튼 찾기
+            const targetItemButton = targetItem.querySelector('button')
+            // 대상 리뷰 목록 아이템의 버튼 비활성 상태 변경 (활성 상태로)
+            targetItemButton.setAttribute('aria-disabled', 'false')
+          }
+
+          // 위치 변경 후에도 초점 이동 상태가 유지되도록
+          // 이동한 리뷰 목록 아이템의 버튼에 초점 이동
+          button.focus()
+
+        })
+
+
       })()
     </script>
 
