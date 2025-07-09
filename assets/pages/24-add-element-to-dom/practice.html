@@ -76,6 +76,34 @@
           '일기 쓰기'
         ]
 
+        const practice = document.getElementById('practice1')
+        const todoList = practice.querySelector('.todo-list')
+        const form = practice.querySelector('form')
+        // console.dir(form) // HTMLFormElement { childNodes, children, elements }
+        // console.log(form.elements) // HTMLFormContorlsCollection (유사 배열 객체)
+        // const [input, button] = form.elements
+        const [todoInput] = form.elements 
+        // const todoInput = form.elements[0]
+
+        form.addEventListener('submit', (e) => {
+          // 기본 작동 방지
+          e.preventDefault()
+          
+          const newTodoItem = document.createElement('li')
+          newTodoItem.textContent = todoInput.value.trim()
+          // <li>가족과 대화 나누기</li>
+
+          todoList.appendChild(newTodoItem)
+          // <ul class="todo-list">
+          //   <li>배고프면 점심 먹기!</li>
+          //   <li>가족과 대화 나누기</li>
+          // </ul>
+
+          todoInput.value = ''
+          todoInput.focus()
+        
+        })
+
       })()
     </script>
 
