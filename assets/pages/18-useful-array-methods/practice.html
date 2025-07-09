@@ -5,6 +5,23 @@
     <meta charset="UTF-8" />
     <title>유용한 배열 메서드</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        padding: 12px;
+      }
+
+      #practice5 {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        div {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+      }
+    </style>
     <script>
       const users = [
         { id: 1, name: '지수', location: '서울', nationality: '대한민국' },
@@ -170,7 +187,35 @@
           // - 메서드 체이닝 활용
           // - 사용자 그룹 출력 시, JSON.stringify(filteredUsers, null, 2) 구문 활용
 
-          
+          const practice = document.getElementById('practice5')
+          const prefixInput = practice.querySelector('#practice5-prefix')
+          const nationalitySelect = practice.querySelector('#practice5-nationality')
+          const output = practice.querySelector('pre')
+
+          printData(users)
+
+          // 이벤트 위임
+          practice.addEventListener('input', (e) => {
+            
+            const filteredUsers = users
+              .map((user) => {
+                const prefix = prefixInput.value.trim()
+                return { 
+                  ...user, id: `${prefix}${prefix ? '-' : ''}${user.id}` 
+                }
+              })
+              .filter((user) => {
+                const filterKey = nationalitySelect.value
+                if (!filterKey) return users
+                return user.nationality === filterKey
+              })
+
+            printData(filteredUsers)
+          })
+
+          function printData(data) {
+            output.textContent = JSON.stringify(data, null, 2) 
+          }
 
         })()
     </script>
