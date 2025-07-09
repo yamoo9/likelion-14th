@@ -46,7 +46,7 @@
       // 실습 1. 텍스트 메시지 변경
       // 사용자가 버튼을 클릭하면 제목 요소의 내용을 변경합니다.
       ;(() => {
-        const messages = [
+        const headlines = [
           '전자레인지에 금속 용기 사용 금지',
           '생수병은 직사광선 피해서 보관하기',
           '양치 후 30분 이내에는 커피 피하기',
@@ -89,6 +89,19 @@
           '비상연락망은 가족끼리 공유'
         ]
     
+        const practice = document.getElementById('practice1')
+        const headline = practice.querySelector('h2')
+        const button = headline.nextElementSibling
+
+        let index = 0
+        let lastIndex = headlines.length - 1
+
+        button.addEventListener('click', () => {
+          headline.textContent = index++ <= lastIndex 
+            ? headlines[index] 
+            : '더 이상 표시할 제목이 없습니다.'
+        })
+
       })()
     </script>
 
