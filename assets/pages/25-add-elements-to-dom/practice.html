@@ -339,6 +339,20 @@
           }
         ]
 
+        const reviews = newReviews.map(({ content }) => {
+          const element = document.createElement('li')
+          element.textContent = content
+          return element
+        })
+
+        const fragment = document.createDocumentFragment()
+        fragment.append(...reviews)
+
+        document.querySelector('#practice3 button')
+          .addEventListener('click', (e) => {
+            e.currentTarget.nextElementSibling.prepend(...fragment.children)
+          })
+
       })()
     </script>
 
