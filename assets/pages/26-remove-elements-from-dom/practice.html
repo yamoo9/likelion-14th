@@ -118,8 +118,29 @@
     <script>
       // 실습 1. 멤버 제거
       // 각 멤버의 "제거" 버튼 클릭 시, 해당 멤버가 제거되도록 구현합니다.
+      // - removeChild()
+      // - remove()
       ; (() => {
         
+        const practice = document.getElementById('practice1')
+        const members = practice.querySelector('.members')
+
+        members.addEventListener('click', ({ target }) => {
+          const button = target.closest('button')
+          if (!button) return
+          
+          // 제거할요소.부모요소.removeChild(제거할요소)
+          const parent = button.parentElement
+          parent.parentElement.removeChild(parent)
+
+          // 버튼의 부모 요소 제거(remove)
+          // button.parentElement.remove()
+
+          if (members.children.length === 0) {
+            members.innerHTML = ''
+          }
+        })
+
       })()
     </script>
 
