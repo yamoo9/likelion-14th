@@ -185,7 +185,7 @@
       // 각 리뷰의 "위로 이동" 버튼을 누르면 위 요소와 위치가 바뀌도록 구현합니다.
       // - 맨 위의 리뷰는 비활성 상태(`aria-disabled="true"`)로 전환
       // - 비활성 상태인 경우, 초점은 이동되나 작동되지 않아야 함
-      ; (() => {
+      ;(() => {
         
         const practice = document.getElementById('practice2')
 
@@ -235,8 +235,18 @@
 
         })
 
-
       })()
+
+      ;(() => {
+        
+        const practice = document.getElementById('practice2')
+
+        practice.addEventListener('click', ({ target }) => {
+          // 다시 작성해봅시다.
+
+        })
+
+      })
     </script>
 
   </body>
