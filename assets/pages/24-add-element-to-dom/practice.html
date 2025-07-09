@@ -114,6 +114,7 @@
       <button type="button">"면을 넣고" 앞에 추가</button>
       <ol class="recipe-list">
         <li>물을 냄비에 붓고 끓입니다.</li>
+        <!-- 여기에 동적으로 생성된 요소를 삽입합니다. -->
         <li>면을 넣고 3~4분간 끓입니다.</li>
       </ol>
     </section>
@@ -123,14 +124,31 @@
       // "면을 넣고" 앞에 추가 버튼을 누르면 "물이 끓으면 스프를 넣습니다." 항목을 
       // "면을 넣고" 항목 앞에 추가하는 코드를 작성합니다.
       ; (() => {
+        const practice = document.getElementById('practice2')
+        const recipeList = practice.querySelector('.recipe-list')
 
+        // 이벤트 위임
+        practice.addEventListener('click', ({ target }) => {
+          // 가장 가까운 선택자와 일치하는 요소를 찾기 (버튼 포함)
+          const button = target.closest('button')
+          // 빠른 반환
+          if (!button) return
+
+          // 동적 요소 생성
+          const recipeItem = document.createElement('li')
+          recipeItem.textContent = '물이 끓으면 스프를 넣습니다.'
+
+          // 특정 요소 앞에 동적 생성된 요소 삽입
+          recipeList.insertBefore(recipeItem, recipeList.lastElementChild)
+
+        })
       })()
     </script>
 
     <hr />
 
     <div id="practice3">
-      <button type="button">다른 목록으로 이동</button>
+      <button type="button">"망고"를 "포도" 앞으로 이동</button>
 
       <h2>🍉 좋아하는 과일</h2>
       <ol class="fruits-i-like">
@@ -146,9 +164,20 @@
 
     <script>
       // 실습 3. 다른 목록으로 이동
-      // "다른 목록으로 이동" 버튼을 클릭하면 
+      // '"망고"를 "포도" 앞으로 이동' 버튼을 클릭하면 
       // "망고"를 "안 좋아하는 과일" 목록으로 이동하는 코드를 작성합니다.
+      // "포도" 앞에 "망고"를 삽입
+      // 1회만 클릭 이벤트가 작동
       ; (() => {
+        const ilikeFruits = document.querySelector('.fruits-i-like')
+        const idontlikeFruits = document.querySelector('.fruits-i-dont-like')
+        const button = document.querySelector('#practice3 button')
+
+        button.addEventListener('click', () => {
+          const insertFruit = ilikeFruits.lastElementChild
+          const targetFruit = idontlikeFruits.firstElementChild
+          targetFruit.parentElement.insertBefore(insertFruit, targetFruit)
+        }, { once: true })
 
       })()
     </script>
