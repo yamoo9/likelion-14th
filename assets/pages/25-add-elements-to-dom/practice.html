@@ -161,6 +161,36 @@
           }
         ]
 
+        // DocumentFragment 객체 활용
+        // 문서 객체 생성
+        const _dom = document.createDocumentFragment()
+        const container = document.createElement('div')
+        _dom.append(container)
+        
+        // users 데이터 순환
+        for (const { name } of users) {
+          container.insertAdjacentHTML('beforeend', `<li>${name}</li>`)
+        }
+
+        const practice = document.getElementById('practice1')
+        const userList = practice.querySelector('.user-list')
+        const form = practice.querySelector('form')
+
+        // 렌더링
+        userList.append(...container.children)
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault()
+          const [nameInput] = form.elements
+          const username = nameInput.value.trim()
+          if (!username) return
+          const userItem = document.createElement('li')
+          userItem.textContent = username
+          userList.appendChild(userItem)
+          nameInput.value = ''
+          nameInput.focus()
+        })
+
       })()
     </script>
 
@@ -228,8 +258,34 @@
             name: '떡볶이',
             price: 7000,
             ingredients: ['떡', '고추장', '어묵', '양파', '대파', '설탕']
+          },
+          {
+            name: '짜장면',
+            price: 7500,
+            ingredients: ['춘장', '면', '단무지', '양파', '설탕']
           }
         ]
+
+        const practice = document.getElementById('practice2')
+        const button = practice.querySelector('button')
+        const menu = practice.querySelector('.menu')
+
+        const menuItemsTemplate = todaysMenu.reduce((acc, { name, price, ingredients }) => {
+          return acc + /* html */`
+            <li>
+              <h3>${name}</h3>
+              <p>
+                <span class="price">${price.toLocaleString()}원</span>
+                <span class="divider" role="none">|</span>
+                <span class="ingredients">(${ingredients.join(' / ')})</span>
+              </p>
+            </li>
+          `
+        }, '')
+
+        button.addEventListener('click', () => {
+          menu.innerHTML = menuItemsTemplate
+        })
 
       })()
     </script>
