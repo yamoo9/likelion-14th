@@ -32,7 +32,7 @@
   <body>
 
     <section id="practice1">
-      <form id="form-agreement">
+      <form id="form-agreement" novalidate>
         <h2>약관 동의</h2>
         <div class="checkbox">
           <input type="checkbox" id="terms" required />
@@ -56,7 +56,30 @@
       // - 마케팅 동의 여부를 콘솔 패널에 출력합니다.
       ;(() => {
         
+        const form = document.getElementById('form-agreement')
 
+        form.addEventListener('submit', (e) => {
+          // 기본 작동 방지
+          e.preventDefault()
+
+          const form = e.currentTarget
+          const checkboxes = [...form.querySelectorAll('[type="checkbox"]')]
+          // 필수 체크박스 필터링 후, 체크 상태 확인 그 갯수가 2개인지 검토
+          const requiredCheckboxCount = checkboxes.filter(
+            (checkbox) => checkbox.required && checkbox.checked
+          ).length
+
+          if (requiredCheckboxCount < 2) {
+            return alert('필수 동의가 필요한 항목에 모두 체크하세요!')
+          }
+
+          // requiredCheckboxCount < 2 && alert('필수 동의가 필요한 항목에 모두 체크하세요!')
+
+          // 마케팅 동의 체크박스
+          const marketingCheckbox = checkboxes.at(-1)
+          console.log(marketingCheckbox.checked ? '마케팅 수신 동의' : '마케팅 수신 동의 안함')
+
+        })
 
       })()
     </script>
@@ -64,9 +87,12 @@
     <hr />
 
     <section id="practice2">
-      <form id="email-form">
+      <form id="email-form" novalidate style="display: flex; align-items: start; gap: 8px;">
         <label for="email">이메일</label>
-        <input type="email" id="email" placeholder="example@mail.com" />
+        <span style="display: flex; flex-direction: column; gap: 4px;">
+          <input type="email" name="email" id="email" placeholder="example@mail.com" />
+          <span role="alert" style="color: red; font-size: 12px;"></span>
+        </span>
         <button type="submit">전송</button>
       </form>
     </section>
@@ -77,7 +103,20 @@
       // - 유효하지 않을 경우 테두리 색상을 붉게 표시하고, 오류 메시지를 화면에 출력합니다.
       ; (() => {
         
+        const form = document.getElementById('email-form')
 
+        form.addEventListener('submit', (e) => {
+          e.preventDefault()
+
+          const userInputEmail = form.email.value.trim()
+
+          if(!userInputEmail.includes('@') || !userInputEmail.includes('.')) {
+            return alert('유효한 이메일 주소를 입력해야 합니다.\n예) user@company.com')
+          }
+
+          console.log(`전송된 이메일 주소 =${userInputEmail}`)
+
+        })
 
       })()
     </script>
