@@ -9,85 +9,92 @@
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <script src="https://cdn.jsdelivr.net/npm/gsap/dist/gsap.min.js"></script>
-    <script src="./assets/scripts/learn/71-form-field-event.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
+    <script src="./assets/scripts/learn/72-xss-sanitize.js" defer></script>
   </head>
 
   <body>
     
     <h1>JavaScript</h1>
 
-    <form class="form">
-      <p>어떤 과일을 좋아하세요? (하나만 체크 가능)</p>
-      <div class="radio-button">
-        <input type="radio" name="favorite-fruit" id="apple" value="사과" />
-        <label for="apple">🍎 사과</label>
-      </div>
-      <div class="radio-button">
-        <input type="radio" name="favorite-fruit" id="grape" value="포도" checked />
-        <label for="grape">🍇 포도</label>
-      </div>
-      <div class="radio-button">
-        <input type="radio" name="favorite-fruit" id="lemon" value="레몬" />
-        <label for="lemon">🍋 레몬</label>
-      </div>
-      <div class="radio-button">
-        <input type="radio" name="favorite-fruit" id="none" value="없음" />
-        <label for="none">😝 없음</label>
-      </div>
-
-      <div class="textarea" style="display: flex; flex-direction: column; gap: 8px; margin-block: 20px;">
-        <label for="comment">댓글</label>
-        <textarea 
-          id="comment" 
-          name="comment" 
-          placeholder="댓글을 작성해주세요."
-          cols="30"
-          rows="5"
-        ></textarea>
-      </div>
+    <form style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px">
+      <label for="text">텍스트</label>
+      <textarea id="text" name="text" cols="40" rows="6"></textarea>
+      <button type="submit">출력</button>
     </form>
 
-    <!-- <form class="form">
-      <p>어떤 과일을 좋아하세요?</p>
-      <div class="checkbox">
-        <input type="checkbox" name="apple" id="apple" value="사과" checked />
-        <label for="apple">🍎 사과</label>
-      </div>
-      <div class="checkbox">
-        <input type="checkbox" name="grape" id="grape" />
-        <label for="grape">🍇 포도</label>
-      </div>
-      <div class="checkbox">
-        <input type="checkbox" name="lemon" id="lemon" checked />
-        <label for="lemon">🍋 레몬</label>
-      </div>
-    </form> -->
-
-    <!-- <form action="/subscribe" method="POST">
-      <div>
-        <label for="email">이메일</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="user@example.com"
-        />
-      </div>
-      <div>
-        <label for="contents">콘텐츠</label>
-        <input
-          type="text"
-          name="contents"
-          id="contents"
-          placeholder="구독 메시지"
-        />
-      </div>
-      <button type="submit">구독</button>
-    </form> -->
+    <output></output>
     
     <main hidden>
 
-      
+      <form class="form">
+        <p>어떤 과일을 좋아하세요? (하나만 체크 가능)</p>
+        <div class="radio-button">
+          <input type="radio" name="favorite-fruit" id="apple" value="사과" />
+          <label for="apple">🍎 사과</label>
+        </div>
+        <div class="radio-button">
+          <input type="radio" name="favorite-fruit" id="grape" value="포도" checked />
+          <label for="grape">🍇 포도</label>
+        </div>
+        <div class="radio-button">
+          <input type="radio" name="favorite-fruit" id="lemon" value="레몬" />
+          <label for="lemon">🍋 레몬</label>
+        </div>
+        <div class="radio-button">
+          <input type="radio" name="favorite-fruit" id="none" value="없음" />
+          <label for="none">😝 없음</label>
+        </div>
+
+        <div class="textarea" style="display: flex; flex-direction: column; gap: 8px; margin-block: 20px;">
+          <label for="comment">댓글</label>
+          <textarea 
+            id="comment" 
+            name="comment" 
+            placeholder="댓글을 작성해주세요."
+            cols="30"
+            rows="5"
+          ></textarea>
+        </div>
+      </form>
+
+      <!-- <form class="form">
+        <p>어떤 과일을 좋아하세요?</p>
+        <div class="checkbox">
+          <input type="checkbox" name="apple" id="apple" value="사과" checked />
+          <label for="apple">🍎 사과</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="grape" id="grape" />
+          <label for="grape">🍇 포도</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="lemon" id="lemon" checked />
+          <label for="lemon">🍋 레몬</label>
+        </div>
+      </form> -->
+
+      <!-- <form action="/subscribe" method="POST">
+        <div>
+          <label for="email">이메일</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="user@example.com"
+          />
+        </div>
+        <div>
+          <label for="contents">콘텐츠</label>
+          <input
+            type="text"
+            name="contents"
+            id="contents"
+            placeholder="구독 메시지"
+          />
+        </div>
+        <button type="submit">구독</button>
+      </form> -->
 
       <script>
         const form = document.querySelector('form')
