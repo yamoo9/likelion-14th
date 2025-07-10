@@ -93,31 +93,31 @@
         const headline = practice.querySelector('h2')
         const button = headline.nextElementSibling
 
-        // headlines 배열에서 각 항목을 꺼낼 인덱스
         let index = 0
-
-        // headlines 배열의 마지막 인덱스 (총 갯수 - 1)
         let lastIndex = headlines.length - 1
 
         button.addEventListener('click', () => {
-          // headline.textContent = index++ <= lastIndex 
-          //   ? headlines[index] 
-          //   : '더 이상 표시할 제목이 없습니다.'
-
-          if (index <= lastIndex) {
-            // 인덱스가 마지막 인덱스보다 작거나 같은 경우
-            // 헤드라인 텍스트 콘텐츠를 꺼낸 headlines 요소로 설정
-            headline.textContent = headlines[index]
-          } else {
-            // 인덱스가 마지막 인덱스보다 큰 경우
-            // headlines 배열에 더 이상 꺼낼 요소가 없으므로
-            // 헤드라인 텍스트 콘텐츠를 표시할 제목이 없다는 문구로 설정
-            headline.textContent = '더 이상 표시할 제목이 없습니다.'
-          }
+          // 추가적으로 현재 코드는 버튼을 누를때마다 
+          // index가 1씩 증가하여 바로 다음줄의 제목이 출력되고있는데,
+          // sequencialOutput()
           
-          // 버튼을 클릭할 때마다 인덱스 +1 증가
-          index += 1
+          // 실습 제목에 적혀있듯이 '랜덤' 으로 제목이 나오게 하는 방법도 있는지 궁금합니다!
+          randomOutput()
         })
+
+        function randomOutput() {
+          // 랜덤 숫자(정수) 값을 생성하는 코드 작성
+          // 난수를 생성하는 방법
+          const randomIndex = Math.floor(headlines.length * Math.random())
+          console.log('randomIndex = %s', randomIndex)
+          headline.textContent = headlines[randomIndex]
+        }
+
+        function sequencialOutput() {
+          headline.textContent = index++ <= lastIndex 
+            ? headlines[index] 
+            : '더 이상 표시할 제목이 없습니다.'
+        }
 
         button.click()
 
