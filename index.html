@@ -16,8 +16,37 @@
     
     <h1>JavaScript</h1>
     
-    
     <main hidden>
+
+      <form action="/subscribe" method="POST">
+        <div>
+          <label for="email">이메일</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="user@example.com"
+            required 
+          />
+        </div>
+        <button type="submit">구독</button>
+      </form>
+
+      <script>
+        const form = document.querySelector('form')
+        form.addEventListener('submit', (e) => {
+          e.preventDefault()
+          
+          console.log('submitting')
+
+          // form.submit()
+
+          // 서버와 데이터 통신
+          // 비동기(AJAX) 방식으로 처리
+          // XMLHttpRequest 객체 사용
+          // Promise 객체 사용
+        })
+      </script>
 
       <section>
         <h2>실습</h2>
