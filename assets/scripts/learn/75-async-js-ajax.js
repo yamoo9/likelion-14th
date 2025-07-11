@@ -42,18 +42,26 @@
 
     // 요청 이벤트 리스닝(청취)
     request.addEventListener('load', ({ target: xhr }) => {
+
+      // 서버에서 도착한 응답 처리
+
       console.log(`응답 상태 코드 = ${xhr.status}`)
       console.log(`응답 데이터 = ${xhr.response}`)
+      
       // 문자값 응답 -> JSON 문자열 -> JavaScript 객체 변환
       const responseData = JSON.parse(xhr.response)
       
+      // 데이터 정리
       // 로그인(login) 데이터만 새롭게 배열 재구성
       const followers = responseData.map(({ login }) => login)
 
+      // 템플릿 구성
       const followerItemsTemplate = followers.map((name) => {
         return `<li>${name}</li>`
       }).join('')
 
+      // DOM 업데이트 (렌더 파이프라인 : 스타일 재계산 -> 레이아웃(reflow) -> 페인트(repaint) -> 컴포지트)
+      // DOM에 렌더링(Rendering) = 화면 변경
       document.querySelector('.github-followers').innerHTML = followerItemsTemplate
     })
   }
