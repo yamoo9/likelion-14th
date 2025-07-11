@@ -165,17 +165,16 @@
     }
   }
 
+  const input = document.querySelector('input')
+
   let debounceInputCount = 0
   input.addEventListener('input', debounce(() => {
     console.log(`%c디바운싱: 검색 입력 횟수 = ${debounceInputCount++}`, 'padding: 0.4px; background-color: black; color: white;')
   }, 600))
 
-  const input = document.querySelector('input')
-
   let inputCount = 0
-
   input.addEventListener('input', () => {
     console.log('일반: 검색 입력 횟수 = ' + inputCount++)
   })
 
-})()
+})
