@@ -10,21 +10,49 @@
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <script src="https://cdn.jsdelivr.net/npm/gsap/dist/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
-    <script src="./assets/scripts/learn/77-async-js-fetch-api.js" defer></script>
+    <script src="./assets/scripts/learn/79-async-js-fetch-data.js" defer></script>
   </head>
 
   <body>
-    
+
     <h1>JavaScript</h1>
 
-    <h2>사용자의 GitHub 저장소 목록</h2>
-    <ul class="repos-list">
-      <li>데이터를 로딩 중입니다...</li>
+    <form autocomplete="off" novalidate>
+      <input type="search" name="search" aria-label="검색" />
+      <select name="category" aria-label="카테고리">
+        <option value="">모든 상품</option>
+        <option value="hats">모자</option>
+      </select>
+      <button type="submit">검색</button>
+    </form>
+
+    <div 
+      hidden
+      role="status"
+      style="color: #073037; font-weight: 700; font-size: 1.45rem;" 
+    >
+      데이터 로딩 중입니다...
+    </div>
+
+    <ul class="products">
+      <li>{데이터 기반 리스트 렌더링}</li>
     </ul>
 
-    
+    <div 
+      role="alert" 
+      style="color: #db172b; font-weight: 700; font-size: 1.45rem;" 
+      hidden
+    >
+      {오류 메시지 출력}
+    </div>
+
     <main hidden>
-      
+
+      <h2>사용자의 GitHub 저장소 목록</h2>
+      <ul class="repos-list">
+        <li>데이터를 로딩 중입니다...</li>
+      </ul>
+
       <input type="search" placeholder="검색어" />
 
       <form style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px">
@@ -32,7 +60,7 @@
         <textarea id="text" name="text" cols="40" rows="6"></textarea>
         <button type="submit">출력</button>
       </form>
-      
+
       <output></output>
 
       <form class="form">
@@ -56,13 +84,12 @@
 
         <div class="textarea" style="display: flex; flex-direction: column; gap: 8px; margin-block: 20px;">
           <label for="comment">댓글</label>
-          <textarea 
-            id="comment" 
-            name="comment" 
+          <textarea
+            id="comment"
+            name="comment"
             placeholder="댓글을 작성해주세요."
             cols="30"
-            rows="5"
-          ></textarea>
+            rows="5"></textarea>
         </div>
       </form>
 
@@ -109,9 +136,9 @@
 
         form.addEventListener('submit', (e) => {
           e.preventDefault()
-          
+
           const form = e.currentTarget
-          
+
           // 폼 요소 순환
 
           // 방법 1.
@@ -149,7 +176,7 @@
         <!-- beforeend : append() -->
       </h1>
       <!-- afterend : after() -->
-    
+
       <article>
         <h2>라면 끓이는 방법</h2>
         <ol class="ramen-cooking-recipe">
@@ -184,8 +211,6 @@
         </ol>
       </div>
 
-      
-
       <div class="parent" style="display: flex; flex-direction: column; gap: 0.5rem;">
         <span>자식 1</span>
         <span>자식 2</span>
@@ -209,12 +234,11 @@
       <p style="margin-block: 0; font-size: 2rem">JavaScript is Awesome!</p>
 
       <h1 id="static">
-        <a 
+        <a
           href="https://developer.mozilla.org/ko/docs/Web/JavaScript"
           rel="noopener noreferrer"
-          target="_blank" 
-          lang="en"
-        >
+          target="_blank"
+          lang="en">
           JavaScript
         </a>
       </h1>
@@ -281,7 +305,7 @@
         <button type="button">등급 확인</button>
         <output>등급 출력</output>
       </div>
-      
+
       <!-- GSAP -->
       <div class="ball"></div>
 
@@ -295,7 +319,7 @@
           </div>
         </div>
       </div>
-    
+
       <!-- Add/Remove Event Listener -->
       <div role="group" style="display: flex; gap: 4px; margin-block: 12px;">
         <button type="button" data-role="add-event">이벤트 추가</button>
@@ -303,7 +327,7 @@
         <button type="button" data-role="tester">이벤트 추가 대기중...</button>
         <button type="button" data-role="once-event">1회만 이벤트 설정</button>
       </div>
-    
+
       <!-- Event Loop -->
       <ul class="link-list">
         <li>
