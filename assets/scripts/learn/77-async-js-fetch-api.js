@@ -122,6 +122,10 @@
       reposList.innerHTML = DOMPurify.sanitize(listTemplate)
 
     })
+    //
+    .catch((error) => {
+      console.error(error.message)
+    })
 
   // 비동기 통신 이후, DOM 업데이트
   const reposList = document.querySelector('.repos-list')
