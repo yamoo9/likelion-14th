@@ -131,4 +131,70 @@
   const reposList = document.querySelector('.repos-list')
   console.log(reposList) // [1]
 
+})
+
+;(() => {
+  
+  const reposList = document.querySelector('.repos-list')
+  const promise = fetch('https://api.github.com/users/yamoo9999/repos')
+  
+  promise
+    .then((response) => {
+      
+      if (!response.ok) {
+        // 오류를 생성해서 전달(던져라!)
+        throw new Error('알 수 없는 오류가 발생했습니다! ❌')
+      }
+
+      return response.json()
+    })
+    .then(messageTheData)
+    .then(generateTemplate)
+    .then(updateDOM)
+    .catch(catchError)
+    .finally(runFinally)
+
+
+  function messageTheData(data) {
+    return data?.map?.(
+      ({ git_url, description, owner: { avatar_url, login } }) => {
+        return {
+          url: git_url,
+          description,
+          avatar: avatar_url,
+          account: login,
+        }
+      },
+    )
+  }
+
+  function generateTemplate(data) {
+    return data
+      ?.map?.(({ url, description, avatar, account }) => {
+        const linkContent = url.replace(/^git:\/\/|.git$/g, '')
+        const linkHref = `https://${linkContent}`
+        return `
+        <li>
+          <h3>${account}</h3>
+          <img src="${avatar}" alt="" height="40" width="40" />
+          <a href="${linkHref}">${linkContent}</a>
+          <p>${description}</p>
+        </li>
+      `
+      })
+      .join('')
+  }
+
+  function updateDOM(template) {
+    reposList.innerHTML = DOMPurify.sanitize(template)
+  }
+
+  function catchError(error) {
+    console.error(error.message)
+  }
+
+  function runFinally() {
+    alert('데이터 요청/응답 성공 또는 실패와 상관없이 항상 최종적으로 이 코드는 실행됩니다.')
+  }
+
 })()
