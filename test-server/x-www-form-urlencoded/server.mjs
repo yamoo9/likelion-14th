@@ -6,7 +6,7 @@ const PORT = 4000
 
 // CORS 허용
 // 다른 출처(사이트)에서 리소스 공유 요청하는 것을 허용
-// app.use(cors())
+app.use(cors())
 
 app.use(express.urlencoded({ extended: true }))
 
