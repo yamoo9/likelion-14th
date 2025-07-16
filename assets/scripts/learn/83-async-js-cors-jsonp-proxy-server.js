@@ -7,14 +7,15 @@
 const API_ENDPOINT = 'https://jsonip.com'
 
 
-// CORS (Cross Origin Resource Sharing)
+// CORS (Cross Origin Resource Sharing) 정책에 의해 오류 발생
 ;(() => {
 
   fetch(API_ENDPOINT)
-    .then(response => response.json())
+    .then((response) => response.json())
     .then(console.log)
     .catch(console.error)
 })
+
 
 // JSONP (JSON with Padding)
 ;(() => {
@@ -28,13 +29,15 @@ const API_ENDPOINT = 'https://jsonip.com'
    * JSONP를 사용해 API를 호출하는 함수
    * 
    * @param {string} url API 서버 주소
-   * @param {string} fnName API 응답을 전달받을 함수 이름
+   * @param {string} callback API 응답을 전달받을 함수 -> 전역 함수로 설정
    */
-  function jsonp(url, callback) {    
+  function jsonp(url, callback) {  
+    // 전역에 공개할 함수 이름을 동적으로 생성  
     const fnName = `${url.replace(/^https:\/\/|\.[^./]+$/g, '')}Fn`
 
     const script = document.createElement('script')
-    script.src = `${url}/${fnName}`
+    script.setAttribute('src', `${url}/${fnName}`)
+    // script.src = `${url}/${fnName}`
 
     script.addEventListener('error', () => {
       console.error('문제가 발생했습니다. 나중에 다시 시도해주세요.')
@@ -42,10 +45,14 @@ const API_ENDPOINT = 'https://jsonip.com'
 
     document.body.append(script)
 
+    // 전달된 callback 함수를 전역 함수로 공개
     globalThis[fnName] = callback
+    // window['jsonipFn']
+    // window.jsonipFn = callback
   }
   
 })
+
 
 // Proxy Server (https://corsproxy.io/demo)
 // - 무료로 사용할 경우, 로컬 테스트에서만 가능
@@ -61,7 +68,7 @@ const API_ENDPOINT = 'https://jsonip.com'
    * 프록시 서버를 사용해 데이터를 페칭하는 함수
    * 
    * @param {string} url API 서버 주소
-   * @returns {Promise<{ ip: string }>} IP 정보
+   * @returns {Promise<any>} Promise<데이터>
    */
   function fetchByProxy(url) {
     return fetch(`https://corsproxy.io/?url=${url}`)
@@ -75,8 +82,9 @@ const API_ENDPOINT = 'https://jsonip.com'
 
 })
 
+
 // Proxy Server (로컬 서버 테스트)
-// - Node.js 환경에서 구동되는 프록시 서버
+// - Node.js 환경에서 구동되는 로컬 프록시 서버 (http://localhost:4000)
 // - 배포 시, 무료 사용 가능 (예: http://render.com)
 ;(() => {
 
@@ -147,4 +155,4 @@ const API_ENDPOINT = 'https://jsonip.com'
       }))
   }
   
-})
+})()
