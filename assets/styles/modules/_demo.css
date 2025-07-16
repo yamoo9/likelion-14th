@@ -13,6 +13,63 @@ body {
   }
 }
 
+[data-id="upload-form"] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .thumbnails {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-block: 12px;
+
+    img {
+      border: 0.1px solid #111;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 14px;
+    background: rgba(0 0 0 / 0.8);
+    color: #fff;
+
+    &:hover {
+      background: rgba(0 0 0 / 1);
+    }
+  }
+}
+
+.sr-only {
+  overflow: hidden;
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: circle(0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  white-space: nowrap;
+
+  caption& {
+    position: static;
+  }
+  
+  &.focusable:focus {
+    overflow: initial;
+    position: static;
+    clip: auto;
+    clip-path: unset;
+    width: initial;
+    height: initial;
+    margin: initial;
+    white-space: initial;
+  }
+}
+
 .clickable {
   user-select: none;
   cursor: pointer;
